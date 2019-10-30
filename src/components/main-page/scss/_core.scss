@@ -1,5 +1,16 @@
+/*CORE*/
 
 html, body{
     margin: 0;
-    background-color: green;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+
+/*CORE ELEMENTS*/
+
+.wrapper{
+    width: 100%
 }

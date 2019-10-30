@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import HelloWorld1 from './main-page/App';
+import MainPage from './main-page/App';
 
 export default class App extends React.Component<any,any>{
     constructor(props:any){
@@ -15,8 +15,8 @@ export default class App extends React.Component<any,any>{
             <Router>
                 <div>
                     <Switch>
-                        <Route path="/helloworld1">
-                            <HelloWorld1/>
+                        <Route exact path="/">
+                            <MainPage/>
                         </Route>
                     </Switch>
                 </div>
