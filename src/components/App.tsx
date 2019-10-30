@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import HelloWorld1 from './HelloWorld1/App';
+import HelloWorld1 from './main-page/App';
 
 export default class App extends React.Component<any,any>{
     constructor(props:any){
