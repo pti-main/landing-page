@@ -1,5 +1,5 @@
 {
-  "name": "defaultreactexpresssetup",
+  "name": "pti-front",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,19 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/david03h/DefaultReactExpressSetup.git"
+    "url": "git+https://github.com/david03h/front-end-pti.git"
   },
   "keywords": [
     "react",
     "express",
     "setup"
   ],
-  "author": "Dawid Harat (PEPE)",
+  "author": "Huwi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/david03h/DefaultReactExpressSetup/issues"
+    "url": "https://github.com/david03h/front-end-pti/issues"
   },
-  "homepage": "https://github.com/david03h/DefaultReactExpressSetup#readme",
+  "homepage": "https://github.com/david03h/front-end-pti#readme",
   "dependencies": {
     "@types/node": "12.7.11",
     "browser-sync": "2.26.7",
