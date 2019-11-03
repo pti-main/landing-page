@@ -1,21 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import Header from './components/Header';
-import Content from './components/Content';
+import Informations from './components/Informations';
 import Footer from './components/Footer';
+import Hero from './components/Hero';
 
-if(location.pathname == "/"){
-    require('./css/main.css');
-}
+require('./css/main.css');
 
 export default class App extends React.Component<any,any>{
-    render(){
+    constructor(props:any) {
+        super(props);
+        this.state = {
+            scrolled: false,
+        }
+    }
+    render() {
         return(
-            <div id="container">
+            <div className="container">
                 <Header/>
                 
-                <Content/>
+                <Hero/>
+
+                <Informations/>
 
                 <Footer/>
             </div>

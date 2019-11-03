@@ -1,60 +1,57 @@
 {
-  "name": "pti-front",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "react": "webpack --watch",
-    "sync": "browser-sync start --proxy localhost:4000 --files public/**/*"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/david03h/front-end-pti.git"
-  },
-  "keywords": [
-    "react",
-    "express",
-    "setup"
-  ],
-  "author": "Huwi",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/david03h/front-end-pti/issues"
-  },
-  "homepage": "https://github.com/david03h/front-end-pti#readme",
+  "name": "pti-main-page",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@types/node": "12.7.11",
-    "browser-sync": "2.26.7",
-    "colors": "1.4.0",
-    "css-loader": "3.2.0",
-    "ejs": "2.7.1",
-    "express": "4.17.1",
-    "express-ejs-extend": "0.0.1",
-    "merge-stream": "2.0.0",
-    "node-sass": "4.12.0",
-    "node-sass-middleware": "0.11.0",
-    "react": "16.10.1",
-    "react-dom": "16.10.1",
-    "react-router-dom": "5.1.2",
-    "socket.io": "2.3.0",
-    "style-loader": "1.0.0",
-    "ts-loader": "6.2.0",
-    "typescript": "3.6.3"
+    "@mrmlnc/readdir-enhanced": "^2.2.1",
+    "@types/node": "^12.12.3",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "@types/react-router-dom": "^5.1.1",
+    "@types/react-scroll": "^1.5.4",
+    "colors": "^1.4.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "react": "^16.11.0",
+    "react-background-video-player": "^1.1.6",
+    "react-dom": "^16.11.0",
+    "react-hamburger-button": "0.0.1",
+    "react-player": "^1.13.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "react-scroll": "^1.7.14",
+    "react-text-loop": "^2.1.1",
+    "typescript": "^3.6.4",
+    "union-value": "^2.0.1",
+    "use": "^3.1.1"
   },
-  "devDependencies": {
-    "@types/react": "16.9.5",
-    "@types/react-dom": "16.9.1",
-    "@types/react-router-dom": "5.1.0",
-    "autoprefixer": "9.6.4",
-    "gulp": "4.0.2",
-    "gulp-clean-css": "4.2.0",
-    "gulp-postcss": "8.0.0",
-    "gulp-sass": "4.0.2",
-    "gulp-sourcemaps": "2.6.5",
-    "webpack": "4.41.0",
-    "webpack-cli": "3.3.9",
-    "webpack-node-externals": "1.7.2"
+  "scripts": {
+    "start": "react-scripts start",
+    "start-screen": "screen -dmS react-scripts react-scripts start",
+    "gulp": "gulp",
+    "gulp-screen": "screen -dmS gulp gulp",
+    "screen": "screen -dmS react-scripts react-scripts start; screen -dmS gulp gulp",
+    "kill": "screen -S react-scripts -X quit; screen -S gulp -X quit",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

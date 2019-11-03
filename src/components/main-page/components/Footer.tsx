@@ -1,12 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import config from '../../../../package.json';
 
-export default function Content(){
+export default function Footer() {
     return(
-        <div id="footer">         
-            <hr/>
-            <span>footer</span>
-
+        <div id="footer">
+            <span>asasas span czy sie cos zmieni czy nie bo nie wiem xddd</span>
+            <span className="build-version">{config.version}</span>
         </div>
     );
 }

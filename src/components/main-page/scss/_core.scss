@@ -1,8 +1,12 @@
 /*CORE*/
-
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap');
 html, body{
     margin: 0;
-    background-color: rgba(0, 0, 0, .2);
+    color: #f4f4f4;
+    height: 400vh;
+    background-color: rgba(0, 0, 0, .0);
+    overflow-x: hidden;
+    font-family: "Source Sans Pro", sans-serif;
 }
 
 *,*::before,*::after{
@@ -10,7 +14,3 @@ html, body{
 }
 
 /*CORE ELEMENTS*/
-
-.wrapper{
-    width: 100%
-}
