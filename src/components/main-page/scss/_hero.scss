@@ -1,0 +1,61 @@
+.hero__container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: rgba(#222, .75);
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  .hero__video {
+    transition: opacity .2s ease-in-out;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -100;
+  }
+  .wrapper {
+    padding: 0 4rem;
+    .title {
+      font-weight: 700;
+      font-size: 3rem;
+      width: 100%;
+      height: auto;
+      word-break: break-all;
+      display: inline-block;
+      span {
+          display: inline-block;
+          color: #3F51B5;
+          word-break: break-all;
+          overflow-wrap: break-word;
+          line-break: strict;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+	.hero__container {
+		.wrapper {
+			padding: 0 2rem;
+			width: 100%;
+			overflow: hidden;
+			.title {
+				font-size: 2rem;
+			}
+			h2 {
+				font-size: 1rem;
+			}
+		}
+	}
+}

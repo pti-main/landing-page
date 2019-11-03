@@ -1,0 +1,179 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background: transparent;
+    transition: background 250ms ease-in-out;
+    height: 80px;
+    z-index: 100;
+    display: flex;
+    &.header__scrolled {
+        background:#222222;
+    }
+}
+
+#nav{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+
+    .logo {
+        width: auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            height: 100%;
+            width: auto;
+        }
+    }
+    ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        a {
+            padding: 0.75rem 0 0.75rem 1.25rem;
+            margin: 0 .5rem;
+        }
+        .header-button {
+            outline: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: .95rem;
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: transparent;
+            transition: color .3s ease-in-out;
+            
+            &:hover {
+                color: whitesmoke;
+            }
+        }
+        .panel-login {
+            transition: opacity .3s ease-in-out;
+            outline: none;
+            background-color: #3F51B5;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            margin-left: 1.75rem;
+            color: white;
+            border-radius: 6px;
+            filter: none;
+            cursor: pointer;
+            font-size: 1rem;
+            opacity: 1;
+            font-family: 'Source Sans Pro', sans-serif;
+            transition: background-color 250ms ease-in-out;
+            &:hover {
+                background-color: #3949AB;
+            }
+        }
+        .panel-login[disabled] {
+            filter: grayscale(100);
+            cursor: default;
+            opacity: .3;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    #nav {
+        padding: 1rem 2rem;
+        .menu__open {
+            display: block;
+            position: relative;
+            width: 2rem;
+            height: 2rem;
+            &.opened {
+                body {
+                    height: 100%;
+                    width: 100%;
+                    overflow-y: hidden;
+                }
+                .bar {
+                    background: #3949AB;
+                    &:nth-child(1) { //500+ polska pozdrawia
+                        transform: rotate(45deg);
+                        top: 50%;
+                        left: 0;
+                        position: absolute;
+                    }
+                    &:nth-child(2) { //1000+
+                        opacity: 0;
+                    }
+                    &:nth-child(3) { //1500+
+                        transform: rotate(-45deg);
+                        top: 50%;
+                        left: 0;
+                        position: absolute;
+                    }
+                }
+            }
+            .bar {
+                transition: all 450ms ease-in-out;
+                background: #f5f5f5;
+                width: 2rem;
+                height: 3px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                opacity: 1;
+                &:nth-child(1) {
+                    transform: translate(-50%, -350%);
+                }
+                &:nth-child(3) {
+                    transform: translate(-50%, 250%);
+                }
+            }
+            cursor: pointer;
+            z-index: 102;
+        }
+        ul {
+            position: absolute;
+            flex-direction: column;
+            justify-content: center;
+            background: #eaeaea;
+            opacity: 1;
+            display: none;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            z-index: 100;
+            padding: 0;
+            transform: translateX(100%);
+            transition: transform 650ms cubic-bezier(0.645, 0.045, 0.355, 1);
+            a {
+                padding: .75rem 1.25rem;
+                span {
+                    font-size: 1.25rem !important;
+                    padding: .75rem 1.25rem;
+                    color: #1d1e22 !important;
+                }
+            }
+            .panel-login {
+                margin-left: 0;
+                font-size: 1.25rem !important;
+                margin-top: .5rem;
+            }
+            &.opened {
+                transform: translateX(0);
+            }
+        }
+        .logo {
+            width: auto;
+            height: 50%;
+        }
+    }
+}

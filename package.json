@@ -1,0 +1,57 @@
+{
+  "name": "pti-main-page",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@mrmlnc/readdir-enhanced": "^2.2.1",
+    "@types/node": "^12.12.3",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "@types/react-router-dom": "^5.1.1",
+    "@types/react-scroll": "^1.5.4",
+    "colors": "^1.4.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "react": "^16.11.0",
+    "react-background-video-player": "^1.1.6",
+    "react-dom": "^16.11.0",
+    "react-hamburger-button": "0.0.1",
+    "react-player": "^1.13.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "react-scroll": "^1.7.14",
+    "react-text-loop": "^2.1.1",
+    "typescript": "^3.6.4",
+    "union-value": "^2.0.1",
+    "use": "^3.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start-screen": "screen -dmS react-scripts react-scripts start",
+    "gulp": "gulp",
+    "gulp-screen": "screen -dmS gulp gulp",
+    "screen": "screen -dmS react-scripts react-scripts start; screen -dmS gulp gulp",
+    "kill": "screen -S react-scripts -X quit; screen -S gulp -X quit",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
