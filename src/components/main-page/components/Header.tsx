@@ -11,6 +11,11 @@ export default class Header extends React.Component<any, any> {
             menuOpened: false,
             openTimeout: null
         };
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth >= 840)
+                document.querySelectorAll('.nav__menu')[0].setAttribute('style', 'transition: none; display: flex;');
+        });
         
         window.addEventListener('scroll', () => {
             this.setState({
@@ -20,7 +25,7 @@ export default class Header extends React.Component<any, any> {
     }
     
     menu(open:boolean) {
-        if (window.innerWidth <= 576) {
+        if (window.innerWidth <= 840) {
             if (open) {
                 document.querySelectorAll('.nav__menu')[0].setAttribute('style', 'display: flex;');
                 setTimeout(() => {

@@ -26,6 +26,7 @@
   }
   .wrapper {
     padding: 0 4rem;
+    transition: all .5s ease-in-out;
     .title {
       font-weight: 700;
       font-size: 3rem;
@@ -44,7 +45,7 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 840px) {
 	.hero__container {
 		.wrapper {
 			padding: 0 2rem;
@@ -58,4 +59,19 @@
 			}
 		}
 	}
+}
+
+@media (max-height: 576px) and (orientation: landscape) {
+  .hero__container {
+    .wrapper { 
+      padding: 0 1.5rem;
+      width: 100%;
+      .title {
+        font-size: 1.5rem;
+      }
+      h2 {
+        font-size: 0.5rem;
+      }
+    }
+  }
 }

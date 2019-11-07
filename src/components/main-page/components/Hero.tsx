@@ -3,7 +3,7 @@ import TextLoop from "react-text-loop";
 
 export default function Hero() {
     return (
-        <div className="hero__container">
+        <div id="hero__container" className="hero__container">
             <img className="hero__video" src="/img/bg.jpg" alt=""/>
             <video style={{opacity: 0}} className="hero__video" preload="metadata" playsInline loop muted onLoadedMetadata={(e) => {
                 e.currentTarget.play()
@@ -21,17 +21,12 @@ export default function Hero() {
             </video>
                 <div className="wrapper">
                 <h1 className="title">
-                    Jesteśmy{" "}
+                    Lorem{" "}
                     <TextLoop className="title__textloop" interval={3500} springConfig={{ stiffness: 340, damping: 30 }}>
-                        <span>osobami ktorzy zdadza mature? mozeee!</span>
-                        <span>programistami?</span>
-                        <span>kobietami lekkich obyczai.</span>
-                        <span>humanistami? niee!</span>
-                        <span>osobami ktorzy zdadza mature? mozeee!</span>
-                        <span>osobami kochającymi disa? nieeee!</span>
-                        <span>*cenzurami*.</span>
-                        <span>debilami.</span>
-                        <span>kotami. ^-^</span>
+                        <span>ipsum 💩</span>
+                        <span>ipsum 🐸</span>
+                        <span>ipsum 🦑</span>
+                        <span>ipsum 🌚</span>
                     </TextLoop>
                 </h1>
                 <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi veritatis minus perferendis laboriosam natus ipsa eligendi qui eaque optio quae.</h2>
