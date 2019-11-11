@@ -1,8 +1,18 @@
 #footer {
     background-color: #888888;
+    color: #eaeaea;
+    transition: background-color 300ms ease-in-out,
+                color 300ms ease-in-out;
     .build-version {
         float: right;
         padding-right: 10px;
         opacity: .2;
+    }
+}
+
+.dark-theme {
+    #footer {
+        background-color: #3d3d3d;
+        color: #eaeaea;
     }
 }

@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: flex-start;
   background: rgba(#222, .75);
+  color: #eaeaea;
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
@@ -24,8 +25,7 @@
     transform: translate(-50%, -50%);
     z-index: -100;
   }
-  .wrapper {
-    padding: 0 4rem;
+  .container {
     transition: all .5s ease-in-out;
     .title {
       font-weight: 700;
@@ -34,6 +34,7 @@
       height: auto;
       word-break: break-all;
       display: inline-block;
+      color: #eaeaea;
       span {
           display: inline-block;
           color: #3F51B5;

@@ -7,6 +7,7 @@ export default class Header extends React.Component<any, any> {
         super(props);
         
         this.state = {
+            panelURI: "https://" + window.location.hostname,
             scrolled: (window.scrollY > 90) ? "header__scrolled" : "",
             menuOpened: false,
             openTimeout: null
@@ -43,7 +44,6 @@ export default class Header extends React.Component<any, any> {
                     openTimeout: setTimeout(() => document.querySelectorAll('.nav__menu')[0].setAttribute('style', 'display: none;'), 650)
                 });
             }
-
             this.setState({
                 menuOpened: !this.state.menuOpened
             });
@@ -53,7 +53,7 @@ export default class Header extends React.Component<any, any> {
     render() {
         return (
             <header className={this.state.scrolled}>
-                <nav id="nav">
+                <nav id="nav" className="container">
                     <div className="logo">
                         <img src="./img/logo_pti.png" alt=""/>
                     </div>
@@ -81,12 +81,13 @@ export default class Header extends React.Component<any, any> {
                             <span className="header-button">Aplikuj</span>
                         </Link>
 
-                        <Redirect to="/panel" style={{textDecoration: 'none'}}>
+                        {/* tutaj chyba musi nastąpić redirect do innego serwera, bo stare eventlistenery dalej dzialaja */}
+                        <a href={this.state.panelURI} style={{textDecoration: 'none'}}>
                             <button className="panel-login" title="Funkcja 'Zaloguj' będzie prowadziła do panelu użytkownika.
                             Panel zostanie wprowadzony w nowszej wersji strony.">
                                 Zaloguj
                             </button>
-                        </Redirect>
+                        </a>
                     </ul>
                 </nav>
             </header>
