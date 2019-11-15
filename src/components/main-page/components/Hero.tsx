@@ -36,7 +36,7 @@ export default function Hero() {
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi veritatis minus perferendis laboriosam natus ipsa eligendi qui eaque optio quae.
                 </h2>
                 
-                <div className="container__buttons">
+                <div className="buttons__container">
                     <button className="buttons__application">
                         Aplikuj
                     </button>
