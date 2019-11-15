@@ -37,11 +37,11 @@ export default function Hero() {
                 </h2>
                 
                 <div className="buttons__container">
-                    <button className="buttons__application">
+                    <button className="application__button">
                         Aplikuj
                     </button>
 
-                    <button className="buttons__look-more">
+                    <button className="look-more__button">
                         Zobacz więcej
                     </button>
                 </div>
