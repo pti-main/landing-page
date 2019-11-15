@@ -3,6 +3,7 @@
     background-color: #f4f4f4;
     .container {
         padding-top: 2rem;
+        padding-bottom: 2rem;
         transition: background-color 300ms ease-in-out;
         background-color: #f4f4f4;
         text-align: center;
@@ -48,6 +49,10 @@
                     .quote__company {
                         width: 100%;
                     }
+                    .selleo__a {
+                        height: 60px;
+                        width: 100%;
+                    }
                     #selleo {
                         width: 100%;
                         height: 100%;
@@ -59,6 +64,7 @@
                     #exp, #wsiz {
                         width: 50px;
                         height: 50px;
+                        margin-left: 0.75rem;
                     }
                     .quote__person {
                         display: flex;

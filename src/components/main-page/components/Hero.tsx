@@ -1,5 +1,6 @@
 import React from 'react';
 import TextLoop from "react-text-loop";
+import { Link } from "react-scroll";
 
 export default function Hero() {
     return (
@@ -20,9 +21,9 @@ export default function Hero() {
                 <source data-src="/img/bg-video.mp4" src="/img/bg-video.mp4" type="video/mp4"></source>
                 <source data-src="/img/bg-video.webm" src="/img/bg-video.webm" type="video/webm"></source>
             </video>
-                <div className="container">
+            <div className="container">
                 <h1 className="title">
-                    Lorem{(window.innerWidth > 840) ? <br/> : " "}
+                    Lorem{(window.innerWidth < 840) ? <br/> : " "}
                     <TextLoop className="title__textloop" interval={3500} springConfig={{ stiffness: 340, damping: 30 }}>
                         <span>marcherka</span>
                         <span>triggered</span>
@@ -30,7 +31,20 @@ export default function Hero() {
                         <span>*wklej tu tekst*</span>
                     </TextLoop>
                 </h1>
-                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi veritatis minus perferendis laboriosam natus ipsa eligendi qui eaque optio quae.</h2>
+                
+                <h2 className="title__under">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi veritatis minus perferendis laboriosam natus ipsa eligendi qui eaque optio quae.
+                </h2>
+                
+                <div className="container__buttons">
+                    <button className="buttons__application">
+                        Aplikuj
+                    </button>
+
+                    <button className="buttons__look-more">
+                        Zobacz więcej
+                    </button>
+                </div>
             </div>
         </div>
     );

@@ -14,7 +14,6 @@ export default class App extends React.Component<any,any>{
                                 <MainPage/>
                             </Route>
                             <Route exact path="/panel">
-                                <span>noice</span><br/>
                                 {Noice}
                             </Route>
                         </Switch>

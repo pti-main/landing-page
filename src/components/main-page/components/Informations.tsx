@@ -12,9 +12,9 @@ export default class Informations extends React.Component<any, any> {
                                 Programowanie aplikacji webowych otwiera drogę do podjęcia pracy w najlepszych firmach informatycznych w Polsce i na świecie. Razem z naszymi programistami podczas zajęć w PTI i w Selleo uczniowie poznają tajniki branży IT oraz mają szansę podjęcia zatrudnienia zaraz po zakończeniu szkoły.
                             </span>
                             <div className="quote__profile">
-                                
-                                <div className="quote__company" onClick={() => {window.location.href = "https://selleo.com";}} id="selleo"></div>
-                                
+                                <a className="selleo__a" href="https://selleo.com">
+                                    <div className="quote__company" id="selleo"></div>
+                                </a>
                                 <div className="quote__person">
                                     <a href="https://selleo.com/people/dariusz-wylon">
                                         <span className="quote__author">
@@ -49,7 +49,7 @@ export default class Informations extends React.Component<any, any> {
 
                         <div className="quote__container">
                             <span className="quote__span">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi corrupti placeat veniam, ullam tenetur aperiam eveniet odio consequuntur? Eaque, perspiciatis quod necessitatibus ipsum voluptates repellat nulla suscipit, consequuntur nobis corrupti accusamus accusantium, id praesentium rerum.
+                                Marchewka lorem ipsum dolor sit amet, consectetur adipiscing elit. Nic nie jest smutny, ból elementem marchew. Lub zbiornik wygoda mikrofalowa. DUIs placerat ENIM id sodales Magna auctor. Fotografia filmu.
                             </span>
                             <div className="quote__profile">
                                 <a href="https://rekord.com.pl">
@@ -57,7 +57,7 @@ export default class Informations extends React.Component<any, any> {
                                 </a>
                                 <div className="quote__person">
                                     <span className="quote__author">
-                                        N/A
+                                        Albert Einstein
                                     </span>
                                     <span className="quote__desc">
                                         Rekord

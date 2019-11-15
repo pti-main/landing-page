@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link as Redirect } from 'react-router-dom';
 import { Link } from "react-scroll";
 
 export default class Header extends React.Component<any, any> {
@@ -7,7 +6,7 @@ export default class Header extends React.Component<any, any> {
         super(props);
         
         this.state = {
-            panelURI: "https://" + window.location.hostname,
+            panelURI: null, //"https://" + window.location.hostname,
             scrolled: (window.scrollY > 90) ? "header__scrolled" : "",
             menuOpened: false,
             openTimeout: null
@@ -51,6 +50,7 @@ export default class Header extends React.Component<any, any> {
     }
     
     render() {
+
         return (
             <header className={this.state.scrolled}>
                 <nav id="nav" className="container">
@@ -65,19 +65,19 @@ export default class Header extends React.Component<any, any> {
                     </div>
 
                     <ul className="nav__menu">
-                        <Link to="informations" spy={true} onClick={() => this.menu(false)} smooth="easeInOutCubic" offset={-80} duration={700}>
+                        <Link to="informations" spy={true} onClick={() => this.menu(false)} smooth="easeInOutCubic" offset={-75} duration={700}>
                             <span className="header-button">Informacje</span>
                         </Link>
                         
-                        <Link to="gallery" spy={true} smooth="easeInOutCubic" offset={-80} duration={700}>
+                        <Link to="gallery" spy={true} smooth="easeInOutCubic" offset={-75} duration={700}>
                             <span className="header-button">Galeria</span>
                         </Link>
 
-                        <Link to="contact" spy={true} smooth="easeInOutCubic" offset={-80} duration={700}>
+                        <Link to="contact" spy={true} smooth="easeInOutCubic" offset={-75} duration={700}>
                             <span className="header-button">Kontakt</span>
                         </Link>
 
-                        <Link to="application" spy={true} smooth="easeInOutCubic" offset={-80} duration={700}>
+                        <Link to="application" spy={true} smooth="easeInOutCubic" offset={-75} duration={700}>
                             <span className="header-button">Aplikuj</span>
                         </Link>
 

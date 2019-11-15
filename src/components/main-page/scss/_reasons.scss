@@ -1,4 +1,7 @@
 #reasons {
+    padding-bottom: 2rem;
+    transition: background-color 300ms ease-in-out;
+    background-color: #f4f4f4;
     .container {
         transition: background-color 300ms ease-in-out;
         background-color: #f4f4f4;
@@ -8,7 +11,8 @@
             display: block;
             transition: color 300ms ease-in-out;
             color: #1d1e22;
-            font-size: 2rem;
+            font-size: 3rem;
+            margin-bottom: .25rem;
             font-weight: 700;
         }
     }
@@ -16,6 +20,7 @@
 
 .dark-theme {
     #reasons {
+        background-color: #1d1e22;
         .container {
             background-color: #1d1e22;
             .title {
