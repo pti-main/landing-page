@@ -5,6 +5,7 @@ import Informations from './components/Informations';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Reasons from './components/Reasons';
+import Tiles from './components/Tiles';
 
 require('./css/main.css');
 
@@ -46,6 +47,8 @@ export default class App extends React.Component<any,any>{
                 <Informations/>
 
                 <Reasons/>
+
+                <Tiles/>
 
                 <Footer/>
             </div>

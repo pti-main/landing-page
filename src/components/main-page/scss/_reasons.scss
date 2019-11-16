@@ -12,8 +12,60 @@
             transition: color 300ms ease-in-out;
             color: color(dark);
             font-size: 3rem;
-            margin-bottom: .25rem;
+            margin-bottom: 1rem;
             font-weight: 700;
+        }
+
+        .description {
+            position: relative;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            opacity: .7;
+            margin-bottom: 2.5rem;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            .reasons-embed {
+                width: 100%;
+                margin-right: 2rem;
+                &:last-child {
+                    margin-right: 0;
+                }
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 1rem;
+                border-radius: .25rem;
+                transition: color 300ms ease-in-out;
+                color: color(dark);
+                .reasons-icon {
+                    position: relative;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    padding-bottom: 1.5rem;
+                    svg {
+                        height: 3rem;
+                        width: auto;
+                        path {
+                            transition: fill 300ms ease-in-out;
+                            fill: color(old-accent);
+                        }
+                    }
+                }
+                .reasons-title {
+                    font-weight: 900;
+                    font-size: 1.2rem;
+                    padding-bottom: 1rem;
+                }
+                .reasons-description {
+                    font-size: .7rem;
+                    opacity: .6;
+                }
+            }
         }
     }
 }
@@ -25,6 +77,32 @@
             background-color: color(dark);
             .title {
                 color: color(text-main);
+            }
+            .content {
+                .reasons-embed {
+                    color: color(text-main);
+                    .reasons-icon {
+                        svg path {
+                            fill: color(accent);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 840px) {
+    #reasons {
+        .content {
+            grid-template-columns: .3fr .3fr !important;
+            grid-template-rows: .3fr .3fr !important;
+            grid-gap: 2rem !important;
+            position: relative;
+
+            flex-direction: row !important;
+            .reasons-embed {
+                width: 30% !important;
             }
         }
     }

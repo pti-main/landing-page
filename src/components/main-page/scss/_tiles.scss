@@ -1,0 +1,57 @@
+#tiles {
+    width: 100%;
+    .container {
+        width: 100%;
+        padding: 0 0 0 0;
+        .first-row {
+            height: 30vh;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            transition: background-color 300ms ease-in-out;
+            .title-tile {
+                position: relative;
+                display: block;
+                width: 60%;
+                height: 100%;
+                transition: background-color 300ms ease-in-out;
+                background-color: darken(color(background-main), 15);
+                .text-tile {
+                    position: relative;
+                    width: 100%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    padding: 0 1.7rem;
+                    text-align: center;
+                    font-weight: 600;
+                    font-size: 1.3rem;
+                }
+            }
+            .video-tile {
+                width: 40%;
+                height: 100%;
+                .video-iframe {
+                    height: 100%;
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    z-index: -1000;
+                    pointer-events:none;
+                }
+            }
+        }
+    }
+}
+
+.dark-theme {
+    #tiles {
+        .container {
+            .first-row  {
+                .title-tile {
+                    background-color: lighten(color(dark), 10);
+                }
+            }
+        }
+    }
+}
