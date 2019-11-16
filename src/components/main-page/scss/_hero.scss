@@ -1,11 +1,11 @@
-.hero__container {
+.hero {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   background: rgba(#222, .75);
-  color: #eaeaea;
+  color: color(text-main);
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
@@ -29,66 +29,69 @@
     transition: all .5s ease-in-out;
     .title {
       font-weight: 700;
-      font-size: 2.5rem;
+      font-size: 2.3rem;
       width: 100%;
       height: auto;
       word-break: break-all;
       display: inline-block;
-      color: #eaeaea;
+      color: color(text-main);
       span {
           display: inline-block;
-          color: #3F51B5;
+          color: color(accent);
           word-break: break-all;
           overflow-wrap: break-word;
           line-break: strict;
       }
     }
-    .under__title {
+    .title-under {
+      font-weight: 500;
       width: 100%;
-      font-size: 1.1rem;
+      font-size: 1rem;
       text-align: justify;
+      
     }
-    .buttons__container {
+    .container__buttons {
+      position: relative;
+      display: flex;
+      flex-direction: column;
       margin-top: 3rem;
       display: flex;
-      .application__button {
+
+      .buttons{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        padding: 1rem 1rem;
         border: none;
+        border-radius: .8rem;
         outline: none;
-        transition: background-color 250ms ease-in-out;
-        background-color: #3F51B5;
-        box-shadow: 0 0 4px 1px rgba($color: #000000, $alpha: 0.5);
-        color: #eaeaea;
-        padding: 1rem 3rem; 
-        margin-right: 2rem;
-        text-align: center;
-        justify-content: center;
         font-size: 1rem;
-        display: flex;
-        align-items: center;
-        border-radius: .5rem;
+        text-align: center;
+        box-shadow: 0 0 4px 1px rgba($color: #000000, $alpha: 0.5);
+        color: color(text-main);
         cursor: pointer;
-        &:hover {
-          background-color: darken(#3F51B5, 10);
-          color: #eaeaea;
-        }
+
         &[disabled] {
           filter: grayscale(100);
           cursor: default;
           opacity: .3;
         }
       }
-      .look-more__button {
-        position: relative;
+      .buttons + .buttons {
+        margin-top:1rem;
+      }
+      .buttons__application {
+        transition: background-color 250ms ease-in-out;
+        background-color: color(accent);
+        &:hover {
+          background-color: darken(color(accent), 10);
+          color: color(text-main);
+        }
+      }
+      .buttons__look-more {
         transition: color 250ms ease-in-out;
-        border: none;
-        outline: none;
-        font-size: 1rem;
-        box-shadow: 0 0 4px 1px rgba($color: #000000, $alpha: 0.5);
-        border-radius: .5rem;
-        padding: 1rem 3rem;
-        border: 2px solid #eaeaea;
-        cursor: pointer;
-        color: #eaeaea;
+        border: 2px solid color(text-main);
         background-color: rgba(0,0,0,0.15);
         z-index: 1;
         &::after {
@@ -100,20 +103,16 @@
           transition: all 250ms ease-in-out;
           width: 100%;
           height: 100%;
+          border-radius: .8rem;
           
-          background-color: #eaeaea;
+          background-color: color(text-main);
           opacity: 0;
         }
         &:hover::after {
           opacity: 1;
         }
         &:hover {
-          color: #1d1e22;
-        }
-        &[disabled] {
-          filter: grayscale(100);
-          cursor: default;
-          opacity: .3;
+          color: color(dark);
         }
       }
     }
@@ -121,7 +120,7 @@
 }
 
 @media (max-width: 840px) {
-	.hero__container {
+	.hero {
 		.wrapper {
 			padding: 0 2rem;
 			width: 100%;
@@ -137,7 +136,7 @@
 }
 
 @media (max-height: 576px) and (orientation: landscape) {
-  .hero__container {
+  .hero {
     .wrapper { 
       padding: 0 1.5rem;
       width: 100%;

@@ -1,0 +1,17 @@
+$colors: (
+    text-main: #eaeaea,
+    text-secondary: null,
+
+    dark: #1d1e22,
+
+    background-main: #f4f4f4,
+    background-secondary: null,
+    scroll-color: null,
+
+    old-accent:#3F51B5,
+    accent: rgb(26, 59, 204)
+);
+
+@function color($color){
+    @return map-get($colors, $color);
+}

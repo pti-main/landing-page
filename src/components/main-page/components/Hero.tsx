@@ -4,16 +4,16 @@ import { Link } from "react-scroll";
 
 export default function Hero() {
     return (
-        <div id="hero__container" className="hero__container">
+        <div id="hero" className="hero">
             <img className="hero__video" src="/img/bg.jpg" alt=""/>
             <video style={{opacity: 0}} className="hero__video" preload="metadata" playsInline loop muted onLoadedMetadata={(e) => {
                 e.currentTarget.play()
                     .then(() => {
-                        document.querySelectorAll(".hero__video")[0].setAttribute('style', 'opacity: 0;');
+                        document.getElementsByClassName("hero__video")[0].setAttribute('style', 'opacity: 0;');
             
                         setTimeout(() => {
-                            document.querySelectorAll(".hero__video")[0].remove();
-                            document.querySelectorAll(".hero__video")[0].setAttribute('style', 'opacity: 1;');
+                            document.getElementsByClassName("hero__video")[0].remove();
+                            document.getElementsByClassName("hero__video")[0].setAttribute('style', 'opacity: 1;');
                         }, 100);
                     })
                     .catch((err) => console.log(`User can't play video, because no. (really the problem is: rejected promise: "${err}" (propably user have turned on power saving mode))`));
@@ -32,16 +32,16 @@ export default function Hero() {
                     </TextLoop>
                 </h1>
                 
-                <h2 className="title__under">
+                <h2 className="title-under">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi veritatis minus perferendis laboriosam natus ipsa eligendi qui eaque optio quae.
                 </h2>
                 
-                <div className="buttons__container">
-                    <button className="application__button">
-                        Aplikuj
+                <div className="container__buttons">
+                    <button className="buttons__application buttons">
+                        Dołącz do nas
                     </button>
 
-                    <button className="look-more__button">
+                    <button className="buttons__look-more buttons">
                         Zobacz więcej
                     </button>
                 </div>

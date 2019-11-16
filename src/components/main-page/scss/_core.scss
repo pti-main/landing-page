@@ -2,14 +2,14 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900&display=swap');
 html, body{
     margin: 0;
-    color: #1d1e22;
+    color: color(dark);
     transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
     overflow-x: hidden;
     font-family: "Source Sans Pro", sans-serif;
 
     .dark-theme {
-        background-color: #1d1e22;
-        color: #eaeaea;
+        background-color: color(dark);
+        color: color(text-main);
     }
 }
 
@@ -19,7 +19,8 @@ html, body{
 
 /*CORE ELEMENTS*/
 .container {
-    padding: 0 1rem;
+    width: 100%;
+    padding: 0 2rem;
     margin-left:auto;
     margin-right: auto;
 }

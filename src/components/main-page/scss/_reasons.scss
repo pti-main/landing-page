@@ -1,16 +1,16 @@
 #reasons {
     padding-bottom: 2rem;
     transition: background-color 300ms ease-in-out;
-    background-color: #f4f4f4;
+    background-color: color(background-main);
     .container {
         transition: background-color 300ms ease-in-out;
-        background-color: #f4f4f4;
+        background-color: color(background-main);
         text-align: center;
 
         .title {
             display: block;
             transition: color 300ms ease-in-out;
-            color: #1d1e22;
+            color: color(dark);
             font-size: 3rem;
             margin-bottom: .25rem;
             font-weight: 700;
@@ -20,11 +20,11 @@
 
 .dark-theme {
     #reasons {
-        background-color: #1d1e22;
+        background-color: color(dark);
         .container {
-            background-color: #1d1e22;
+            background-color: color(dark);
             .title {
-                color: #eaeaea;
+                color: color(text-main);
             }
         }
     }
