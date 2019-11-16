@@ -10,7 +10,7 @@ export default function Hero() {
                 e.currentTarget.play()
                     .then(() => {
                         document.getElementsByClassName("hero__video")[0].setAttribute('style', 'opacity: 0;');
-            
+                        
                         setTimeout(() => {
                             document.getElementsByClassName("hero__video")[0].remove();
                             document.getElementsByClassName("hero__video")[0].setAttribute('style', 'opacity: 1;');
