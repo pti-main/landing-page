@@ -71,6 +71,8 @@ export default class Header extends React.Component<any, any> {
                         <div className="bar"></div>
                     </div>
 
+                    {/* TODO: przerobić ten opętany nav menu */}
+
                     <ul className="nav__menu">
                         <Link to="informations" spy={true} onClick={() => this.menu(false)} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
                             <span className="header-button">Informacje</span>
@@ -80,12 +82,16 @@ export default class Header extends React.Component<any, any> {
                             <span className="header-button">Galeria</span>
                         </Link>
 
-                        <Link to="contact" spy={true} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
-                            <span className="header-button">Kontakt</span>
-                        </Link>
+                        {/* <Link to="application" spy={true} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
+                            <span className="header-button">O szkole</span>
+                        </Link> */}
 
                         <Link to="application" spy={true} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
                             <span className="header-button">Aplikuj</span>
+                        </Link>
+
+                        <Link to="contact" spy={true} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
+                            <span className="header-button">Kontakt</span>
                         </Link>
 
                         {/* TODO: tutaj chyba musi nastąpić redirect do innego serwera, bo stare eventlistenery dalej dzialaja */}

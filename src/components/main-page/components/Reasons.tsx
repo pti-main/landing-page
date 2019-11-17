@@ -2,6 +2,9 @@ import React from 'react';
 
 export default function Reasons() {
     return (
+
+        // TODO: poprawić to
+
         <div id="reasons">
             <div className="container">
                 <div className="title">Czego nauczamy?</div>

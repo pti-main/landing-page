@@ -2,6 +2,9 @@ import React from 'react';
 
 export default function Tiles() {
     return (
+
+        // TODO: zrobić mobile first
+
         <div id="tiles">
             <div className="container">
                 <div className="first-row">

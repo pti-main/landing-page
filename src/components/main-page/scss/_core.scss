@@ -1,6 +1,8 @@
 /*CORE*/
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900&display=swap');
-html, body{
+
+html,
+body {
     margin: 0;
     color: color(dark);
     transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
@@ -13,29 +15,38 @@ html, body{
     }
 }
 
-*,*::before,*::after{
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 /*CORE ELEMENTS*/
 .container {
-    width: 100%;
     padding: 0 2rem;
-    margin-left:auto;
+    margin-left: auto;
     margin-right: auto;
 }
-@media (min-width: 768px) {
-    .container {
-        width: 750px;
+@media (max-width: 768.98px) {
+    .container{
+        width: 100%;
     }
 }
-@media (min-width: 992px) {
+
+@media (min-width: 768px) and (max-width: 991.98px) {
     .container {
-        width: 970px;
+        width: 89vw; 
     }
 }
-@media (min-width: 1200px) {
+
+@media (min-width: 992px) and (max-width: 1299.98px) {
     .container {
-        width: 1170px;
+        width: 80vw; 
+    }
+}
+
+@media (min-width: 1300px) {
+    .container {
+        width: 75vw; 
     }
 }

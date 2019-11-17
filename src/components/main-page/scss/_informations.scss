@@ -1,12 +1,14 @@
 .informations__background {
     transition: background-color 300ms ease-in-out;
     background-color: color(background-main);
+
     .container {
         padding-top: 2rem;
         padding-bottom: 2rem;
         transition: background-color 300ms ease-in-out;
         background-color: color(background-main);
         text-align: center;
+
         .section-name {
             display: block;
             transition: color 300ms ease-in-out;
@@ -22,6 +24,7 @@
             grid-template-columns: 1fr;
             grid-template-rows: repeat(4, auto);
             grid-row-gap: 2rem;
+
             .quote-container {
                 display: flex;
                 flex-direction: column;
@@ -30,10 +33,12 @@
                 background: darken(color(background-main), 10);
                 padding: 1rem;
                 border-radius: .25rem;
+
                 .quote-span {
                     font-size: 1rem;
                     width: 100%;
                 }
+
                 .quote-profile {
                     display: grid;
                     justify-content: center;
@@ -42,44 +47,52 @@
                     grid-template-columns: 1fr 2fr;
                     grid-template-rows: 60px;
                     grid-column-gap: 1rem;
+
                     a {
                         display: flex;
                         align-items: flex-start;
                     }
+
                     .quote-company {
                         width: 100%;
                     }
+
                     .selleo-a {
                         height: 60px;
                         width: 100%;
                     }
+
                     .quote-person {
                         display: flex;
                         justify-content: center;
                         align-items: flex-end;
                         flex-direction: column;
                         text-align: right;
+
                         a {
                             text-decoration: none;
                             color: inherit;
                             text-align: right;
                         }
+
                         .quote-author {
                             font-size: 1.5rem;
                             font-weight: 600;
                         }
+
                         .quote-desc {
                             font-size: 1rem;
                             font-size: 200;
                             opacity: .5;
                         }
-                    }              
+                    }
                 }
             }
         }
 
     }
 }
+
 #selleo {
     width: 100%;
     height: 100%;
@@ -88,7 +101,9 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
-#exp, #wsiz {
+
+#exp,
+#wsiz {
     width: 50px;
     height: 50px;
     margin-left: 0.75rem;
@@ -97,15 +112,19 @@
 .dark-theme {
     .informations__background {
         background-color: color(dark);
+
         .container {
             background-color: color(dark);
+
             .section-name {
                 color: color(text-main);
             }
         }
+
         .companies-quotes {
             .quote-container {
                 background: lighten(color(dark), 10);
+
                 .quote-profile {
                     #selleo {
                         background-image: url("/img/companies/selleo.png") !important;
@@ -125,6 +144,7 @@
         grid-template-rows: 1fr 1fr !important;
         grid-gap: 2rem !important;
         position: relative;
+
         &::after {
             content: "\201D";
             width: 4rem;
@@ -141,6 +161,7 @@
             opacity: .9;
             background: darken(color(background-main), 10);
         }
+
         // &::after {
         //     content: "\201D";
         //     width: 4rem;
@@ -154,6 +175,7 @@
         //     opacity: .4;
         // }
     }
+
     .dark-theme {
         .companies-quotes {
             &::after {
