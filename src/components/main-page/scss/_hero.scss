@@ -28,8 +28,6 @@
 	}
 
 	.container {
-		transition: all .5s ease-in-out;
-
 		.title {
 			font-weight: 600;
 			width: 100%;
@@ -61,7 +59,7 @@
 				width: 11em;
 				padding: 1em 1em;
 				border: none;
-				border-radius: .8em;
+				border-radius: $br;
 				outline: none;
 				font-size: 1rem;
 				box-shadow: 0 0 4px 1px rgba($color: #000000, $alpha: 0.5);

@@ -28,7 +28,7 @@ export default function Hero() {
             <div className="container">
                 <h1 className="title">
                     Lorem{(window.innerWidth < 840) ? <br/> : " "}
-                    <TextLoop className="title__textloop" interval={3500} springConfig={{ stiffness: 340, damping: 30 }}>
+                    <TextLoop className="title__textloop" interval={3500} noWrap={true} adjustingSpeed={0} springConfig={{ stiffness: 340, damping: 30 }}>
                         <span>marcherka</span>
                         <span>triggered</span>
                         <span>rozsierdzony</span>

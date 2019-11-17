@@ -1,8 +1,8 @@
 #reasons {
-    padding-bottom: 2rem;
     transition: background-color 300ms ease-in-out;
     background-color: color(background-main);
     .container {
+        padding-top: 3rem;
         transition: background-color 300ms ease-in-out;
         background-color: color(background-main);
         text-align: center;
@@ -38,7 +38,7 @@
                 flex-direction: column;
                 justify-content: space-between;
                 padding: 1rem;
-                border-radius: .25rem;
+                border-radius: $br;
                 transition: color 300ms ease-in-out;
                 color: color(dark);
                 .reasons-icon {
@@ -58,11 +58,11 @@
                 }
                 .reasons-title {
                     font-weight: 900;
-                    font-size: 1.2rem;
+                    font-size: 1.25rem;
                     padding-bottom: 1rem;
                 }
                 .reasons-description {
-                    font-size: .7rem;
+                    font-size: 1rem;
                     opacity: .6;
                 }
             }
@@ -92,12 +92,9 @@
     }
 }
 
-@media (min-width: 840px) {
+@media (min-width: 768px) {
     #reasons {
         .content {
-            grid-template-columns: .3fr .3fr !important;
-            grid-template-rows: .3fr .3fr !important;
-            grid-gap: 2rem !important;
             position: relative;
 
             flex-direction: row !important;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Header from './components/Header';
 import Informations from './components/Informations';
-import Footer from './components/Footer';
+import Contact from './components/Contact';
 import Hero from './components/Hero';
 import Reasons from './components/Reasons';
 import Tiles from './components/Tiles';
@@ -33,7 +33,7 @@ export default class App extends React.Component<any,any>{
             return relevantChildren;
         }
 
-        getCount(document.body, true/false);
+        getCount(document.body, true);
 
         */
     }
@@ -48,9 +48,9 @@ export default class App extends React.Component<any,any>{
 
                 <Reasons/>
 
-                <Tiles/>
+                {/* <Tiles/> */}
 
-                <Footer/>
+                <Contact/>
             </div>
         );
     }

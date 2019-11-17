@@ -1,6 +1,7 @@
 {
   "name": "pti-main-page",
-  "version": "0.0.4",
+  "version": "0.0.7",
+  "prealpha": true,
   "private": true,
   "dependencies": {
     "@mrmlnc/readdir-enhanced": "2.2.1",
