@@ -48,7 +48,7 @@ export default class App extends React.Component<any,any>{
 
                 <Reasons/>
 
-                {/* <Tiles/> */}
+                <Tiles/>
 
                 <Contact/>
             </div>

@@ -35,104 +35,128 @@
         }
 
         .description {
-            position: relative;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
             opacity: .7;
-            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
         }
 
-        form {
-            width: 100%;
-            margin-bottom: 1rem;
+        .form-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: repeat(6, auto);
-            grid-template-areas:
-            "title title"
-            "email email"
-            "phone phone"
-            "message message"
-            "submit submit"
-            "privacy privacy";
-            grid-row-gap: 1rem;
-            input, textarea {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            grid-gap: 2rem;
+            form {
                 width: 100%;
-                border-radius: $br;
-                text-align: left;
-                font-size: .9rem;
-                padding: .75rem 1.25rem;
-                color: color(dark);
-                background-color: color(text-main);
-                border: 2px solid darken(color(text-main), 5);
-                transition: all 300ms ease-in-out;
-                font-family: "Source Sans Pro";
-                &:focus {
-                   outline: none;
-                   border-color: color(accent);
+                margin-bottom: 1rem;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(6, auto);
+                grid-template-areas:
+                "title title"
+                "email email"
+                "phone phone"
+                "message message"
+                "submit submit"
+                "privacy privacy";
+                grid-row-gap: 1rem;
+                input, textarea {
+                    width: 100%;
+                    border-radius: $br;
+                    text-align: left;
+                    font-size: .9rem;
+                    padding: .75rem 1.25rem;
+                    color: color(dark);
+                    background-color: color(text-main);
+                    border: 2px solid darken(color(text-main), 5);
+                    transition: all 300ms ease-in-out;
+                    font-family: "Source Sans Pro";
+                    &:focus {
+                       outline: none;
+                       border-color: color(accent);
+                    }
                 }
-            }
-            .input-title {
-                grid-area: title;
-            }
-            .input-email {
-                grid-area: email;
-            }
-            .input-tel {
-                grid-area: phone;
-            }
-            .input-message {
-                min-height: 10rem;
-                min-width: 100%;
-                max-width: 100%;
-                max-height: 10rem;
-                resize: none;
-                grid-area: message;
-            }
-            .input-button {
-                grid-area: submit;
-                font-family: "Source Sans Pro";
-                width: 100%;
-                outline: none;
-                border: none;
-                padding: 1.25rem 1.75rem;
-                transition: color 300ms ease-in-out,
-                            background-color 100ms ease-in-out;
-                color: color(text-main);
-                background-color: color(accent);
-                border-radius: $br;
-                font-size: 1rem;
-                &[disabled] {
-                    filter: grayscale(100);
-                    cursor: default;
-                    opacity: .3;
+                .input-title {
+                    grid-area: title;
                 }
-
-                &:active {
-                    background-color: darken(color(accent), 10);
+                .input-email {
+                    grid-area: email;
                 }
-            }
-            .input-error {
-                border-color: #f44336;
-            }
-            .input-privacy {
-                grid-area: privacy;
-                font-size: .65rem;
-                transition: color 300ms ease-in-out;
-                padding-top: 1rem;
-                color: rgba(color(dark), .3);
-                a {
+                .input-tel {
+                    grid-area: phone;
+                }
+                .input-message {
+                    min-height: 10rem;
+                    min-width: 100%;
+                    max-width: 100%;
+                    max-height: 10rem;
+                    resize: none;
+                    grid-area: message;
+                }
+                .input-button {
+                    grid-area: submit;
+                    font-family: "Source Sans Pro";
+                    width: 100%;
+                    outline: none;
+                    border: none;
+                    padding: 1.25rem 1.75rem;
+                    transition: color 300ms ease-in-out,
+                                background-color 100ms ease-in-out;
+                    color: color(text-main);
+                    background-color: color(accent);
+                    border-radius: $br;
+                    font-size: 1rem;
+                    &[disabled] {
+                        filter: grayscale(100);
+                        cursor: default;
+                        opacity: .3;
+                    }
+    
+                    &:active {
+                        background-color: darken(color(accent), 10);
+                    }
+                }
+                .input-error {
+                    border-color: #f44336;
+                }
+                .input-privacy {
+                    grid-area: privacy;
+                    font-size: .65rem;
                     transition: color 300ms ease-in-out;
-                    text-decoration: none;
-                    color: rgba(color(dark), .8);
+                    color: rgba(color(dark), .3);
+                    a {
+                        transition: color 300ms ease-in-out;
+                        text-decoration: none;
+                        color: rgba(color(dark), .8);
+                    }
                 }
             }
-        }
-
-        .nav-title {
-
+            .right-nav {
+                text-align: left;
+                .nav-post {
+                    &:first-child {
+                        padding-bottom: 2rem;
+                    }
+                    .nav-title {
+                        font-weight: 900;
+                        font-size: 2rem;
+                        padding-bottom: 1rem;
+                    }
+                    .nav-description {
+                        font-weight: 400;
+                        font-size: 1rem;
+                        span {
+                            display: block;
+                            padding-bottom: .3rem;
+                        }
+                        .contact-link {
+                            text-decoration: none;
+                            color: lighten(color(accent), 20);
+                        }
+                        .contact-address {
+                            padding-top: .6rem;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -146,27 +170,38 @@
             opacity: 0.05;
         }
         .container {
-            form {
-                input, textarea {
-                    background-color: lighten($color: #1d1e22, $amount: 10);
-                    border-color: lighten($color: #1d1e22, $amount: 15);
-                    color: color(text-main);
-                    &:focus {
-                        border-color: color(accent);
-                     }
-                }
-            }
-            .input-error {
-                border-color: #f44336;
-            }
-            .input-privacy {
-                color: rgba(color(text-main), .3);
-                a {
-                    color: rgba(color(text-main), .8);
-                }
-            }
             .title {
                 color: color(text-main);
+            }
+            .form-grid {
+                form {
+                    input, textarea {
+                        background-color: lighten($color: #1d1e22, $amount: 10);
+                        border-color: lighten($color: #1d1e22, $amount: 15);
+                        color: color(text-main);
+                        &:focus {
+                            border-color: color(accent);
+                        }
+                    }
+                }
+                .input-error {
+                    border-color: #f44336;
+                }
+                .input-privacy {
+                    color: rgba(color(text-main), .3);
+                    a {
+                        color: rgba(color(text-main), .8);
+                    }
+                }
+                .right-nav {
+                    .nav-post {
+                        .nav-description {
+                            .nav-link {
+                                color: color(accent);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -175,16 +210,19 @@
 @media (min-width: 768px) {
     #contact {
         .container {
-            form {
-                width: 50%;
-                grid-template-rows: repeat(5, auto) !important;
-                grid-gap: 1rem !important;
-                grid-template-areas:
-                "title title"
-                "email phone"
-                "message message"
-                "submit submit"
-                "privacy privacy";
+            .form-grid {
+                grid-template-columns: 1fr 1fr !important;
+                form {
+                    width: 100%;
+                    grid-template-rows: repeat(5, auto) !important;
+                    grid-gap: 1rem !important;
+                    grid-template-areas:
+                    "title title"
+                    "email phone"
+                    "message message"
+                    "submit submit"
+                    "privacy privacy";
+                }
             }
         }
     }
