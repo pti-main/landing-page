@@ -37,19 +37,20 @@ export default class App extends React.Component<any,any>{
 
         */
     }
+
     render() {
         return(
             <div className="pti__container">
                 <Header/>
-                
+
                 <Hero/>
 
                 <Informations/>
 
                 <Reasons/>
-
+                
                 <Tiles/>
-
+                
                 <Contact/>
             </div>
         );

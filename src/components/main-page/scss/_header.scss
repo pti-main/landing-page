@@ -24,18 +24,23 @@ header {
     justify-content: space-between;
     align-items: center;
     // padding: 1rem 4rem;
-
-    .logo {
-        width: auto;
-        height: 80%;
-        padding: .5rem 0;
+    a {
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-
-        img {
-            height: 100%;
+        .logo {
             width: auto;
+            height: 80%;
+            padding: .5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            img {
+                height: 100%;
+                width: auto;
+            }
         }
     }
 
@@ -79,7 +84,6 @@ header {
             color: white;
             cursor: pointer;
             font-size: .95rem;
-            // font-family: 'Source Sans Pro', sans-serif;
             background-color: transparent;
             transition: color .3s ease-in-out;
 
@@ -101,7 +105,7 @@ header {
             cursor: pointer;
             font-size: 1rem;
             opacity: 1;
-            font-family: 'Source Sans Pro', sans-serif;
+            font-family: $font;
             transition: background-color 250ms ease-in-out;
 
             &:hover {
@@ -227,11 +231,12 @@ header {
 
             a {
                 padding: .75rem 1.25rem;
-
+                height: 60px;
+                //lol still talking to her
                 span {
                     transition: color 300ms ease-in-out;
                     font-size: 1.25rem !important;
-                    padding: .75rem 1.25rem;
+                    padding: 0;
                     color: color(dark) !important;
                     position: relative;
 

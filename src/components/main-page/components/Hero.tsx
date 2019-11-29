@@ -23,13 +23,11 @@ export default function Hero() {
                 <source data-src="/img/bg-video.webm" src="/img/bg-video.webm" type="video/webm"></source>
             </video>
 
-            {/* TODO: dopasować rozmieszczenie dokładnie jak w mockupie */}
-
             <div className="container">
                 <h1 className="title">
                     Lorem{(window.innerWidth < 840) ? <br/> : " "}
                     <TextLoop className="title__textloop" interval={3500} noWrap={true} adjustingSpeed={0} springConfig={{ stiffness: 340, damping: 30 }}>
-                        <span>marcherka</span>
+                        <span>marcherka </span>
                         <span>triggered</span>
                         <span>rozsierdzony</span>
                         <span>*wklej tu tekst*</span>
@@ -41,13 +39,19 @@ export default function Hero() {
                 </h2>
                 
                 <div className="container__buttons">
-                    <button className="buttons__application buttons">
-                        Dołącz do nas
-                    </button>
 
-                    <button className="buttons__look-more buttons">
-                        Zobacz więcej
-                    </button>
+                    <a href="/aplikuj" style={{textDecoration: 'none'}}>
+                        <button className="buttons__application buttons">
+                            Dołącz do nas
+                        </button>
+                    </a>
+                    
+                    <Link to="reasons" spy={true} smooth="easeInOutCubic" offset={-80} duration={700}>
+                        <button className="buttons__look-more buttons">
+                            Zobacz więcej
+                        </button>
+                    </Link>
+                    
                 </div>
             </div>
         </div>

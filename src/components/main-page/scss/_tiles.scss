@@ -1,215 +1,156 @@
+/*TODO: 780px structure falls off */
+
 #tiles {
-    padding-top: 3rem;
-    width: 100%;
-    .container {
-        width: 100%;
-        padding: 0 0 0 0;
-        .row {
-            height: 30vh;
-            width: 100%;
-            text-align: center;
-            display: flex;
-            flex-direction: row;
-            transition: background-color 300ms ease-in-out;
+	padding-top: 3rem;
+	width: 100%;
 
-            // first row
-            .title-tile {
-                position: relative;
-                display: block;
-                width: 60%;
-                height: 100%;
-                transition: background-color 300ms ease-in-out;
-                background-color: darken(color(background-main), 15);
-                .text__tile {
-                    position: relative;
-                    width: 100%;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    padding: 0 1.7rem;
-                    text-align: center;
-                    font-weight: 600;
-                    font-size: 1.3rem;
-                }
-            }
-            .video-tile {
-                width: 40%;
-                height: 100%;
-                .video-iframe {
-                    height: 100%;
-                    width: 100%;
-                    border: none;
-                    outline: none;
-                    z-index: -1000;
-                    pointer-events:none;
-                }
-            }
+	transition: background-color 300ms ease-in-out;
+    background-color: color(background-main);
 
-            // second row
-            .tile-container {
-                position: relative;
-                width: 33.33333333%;
-                height: 100%;
-                color: color(text-main);
-                // text-shadow: 1px .5px 0 #7A7A7A;
-                cursor: pointer;
+	.container {
 
-                .text__tile-image {
-                    transition: background-color 300ms ease-in-out,
-                                opacity 300ms ease-in-out;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    background-blend-mode: multiply;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                    background-position: center center;
-                    color: color(text-main);
-                    height: 100%;
-                    width: 100%;
-                    z-index: -1;
-                }
+		transition: background-color 300ms ease-in-out;
+		background-color: color(background-main);
+		
+		.row {
+			height: auto;
+			width: 100%;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			transition: background-color 300ms ease-in-out;
+			&:not(:last-child) {
+				margin-bottom: 1rem;
+			}
 
-                .text__tile-title {
-                    top: 0;
-                    text-transform: uppercase;
-                    font-weight: 900;
-                    margin-top: 10%;
-                    font-size: 1.2rem;
-                    z-index: 100;
-                }
+			// first row
+			.title-tile {
+				position: relative;
+				width: 100%;
+				padding: 2rem;
+				transition: background-color 300ms ease-in-out;
+				background-color: darken(color(background-main), 15);
+				border-radius: $br;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				.text__tile {
+					font-weight: 600;
+					font-size: 1.3rem;
+				}
+			}
+			.video-tile {
+				width: 100%;
+				height: 250px;
+				.video-iframe {
+					height: 100%;
+					width: 100%;
+					border: none;
+					outline: none;
+					border-radius: $br;
+					z-index: -1000;
+					pointer-events:none;
+				}
+			}
 
-                .text__tile-description {
-                    position: relative;
-                    width: 80%;
-                    top: 0;
-                    left: 50%;
-                    margin-top: 10%;
-                    transform: translateX(-50%);
-                }
-                
-                .text__tile-checkit {
-                    letter-spacing: 0.325rem;
-                    text-transform: uppercase;
-                    font-size: 1.8rem;
-                    margin-top: 10%;
-                    font-weight: 700;
-                }
-            }
+			// second row
+			.tile-container {
+				position: relative;
+				width: 100%;
+				color: color(text-main);
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 1rem;
+				flex-direction: column;
+				border-radius: $br;
+				transition: background-color 250ms ease-in-out;
+				background-color: rgba(black, .65);
+				opacity: 1;
+				background-blend-mode: multiply;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center center;
+				margin-bottom: 2rem;
+				&:nth-child(3),
+				&:nth-child(4) {
+					margin-bottom: 0;
+				}
+				&:hover {
+					background-color: rgba(black, .75) !important;
+				}
 
-            // third row
-            div#patronage1 {
-                width: 100%;
-                height: 100%;
-                .text__tile-title {
-                    margin-top: 5%;
-                }
-                .text__tile-description {
-                    margin-top: 2%;
-                }
-                .text__tile-checkit {
-                    margin-top: 4%;
-                }
+				.text__tile-title {
+					top: 0;
+					text-transform: uppercase;
+					font-weight: 900;
+					font-size: 1.2rem;
+				}
+				
+				.text__tile-checkit {
+					letter-spacing: 0.325rem;
+					text-transform: uppercase;
+					font-size: 1.8rem;
+					font-weight: 700;
+				}
+				&#classes {
+					background-image: url("https://technikum.wsi.edu.pl/wp-content/uploads/2018/03/happy-teenage-friends-with-smartphones-outdoors-PHUBYKV-1.jpg");
+				}
+				&#patronage {
+					background-image: url("/img/bg.jpg");
+				}
+				&#technician {
+					background-image: url("https://technikum.wsi.edu.pl/wp-content/uploads/2018/04/computer-smile-man.jpg");
+				}
+				&#patronage1 {
+					background-image: url("https://technikum.wsi.edu.pl/wp-content/uploads/2018/04/stypendium-goal-2.jpg");
+				}
+			}
 
-                img#patronage1 {
-                    background-image: url("https://technikum.wsi.edu.pl/wp-content/uploads/2018/04/stypendium-goal-2.jpg");
-                    background-color: rgba(red, .7);
-                    opacity: .7;
-                }
-
-                &:hover {
-                    img#patronage1 {
-                        background-color: rgba(red, .4);
-                        opacity: .9;
-                    }
-                }
-            }
-
-            img#classes {
-                background-image: url("https://technikum.wsi.edu.pl/wp-content/uploads/2018/03/happy-teenage-friends-with-smartphones-outdoors-PHUBYKV-1.jpg");
-                background-color: rgba(orange, .7);
-                opacity: .7;
-                // opacity: .4;
-            }
-
-            div#classes:hover {
-                img#classes {
-                    background-color: rgba(orange, .4);
-                    opacity: .9;
-                    // opacity: .6;
-                }
-            }
-
-            img#patronage {
-                background-image: url("/img/bg.jpg");
-                background-color: rgba(#1E38AA, .6);
-                opacity: .7;
-                // opacity: .4;
-            }
-
-            div#patronage:hover {
-                img#patronage {
-                    background-color: rgba(#1E38AA, .3);
-                    opacity: .9;
-                    // opacity: .6;
-                }
-            }
-
-            img#technician {
-                background-image: url("https://technikum.wsi.edu.pl/wp-content/uploads/2018/04/computer-smile-man.jpg");
-                background-color: rgba(#888, 1);
-                opacity: .7;
-                // opacity: .6;
-            }
-
-            div#technician:hover {
-                img#technician {
-                    background-color: rgba(#888, .8);
-                    opacity: .9;
-                    // opacity: .8;
-                }
-            }
-        }
-    }
+			// third row
+			div#patronage1 {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
 }
 
 .dark-theme {
-    #tiles {
-        .container {
-            .row  {
-                .title-tile {
-                    background-color: lighten(color(dark), 10);
-                }
+	#tiles {
+		background-color: color(dark);
+		.container {
+			background-color: color(dark);
+			.row  {
+				.title-tile {
+					background-color: lighten(color(dark), 10);
+				}
+			}
+		}
+	}
+}
 
-                img#classes {
-                    opacity: .4 !important;
-                }
-    
-                div#classes:hover {
-                    img#classes {
-                        opacity: .6 !important;
-                    }
-                }
-    
-                img#patronage {
-                    opacity: .4 !important;
-                }
-    
-                div#patronage:hover {
-                    img#patronage {
-                        opacity: .6 !important;
-                    }
-                }
-    
-                img#technician {
-                    opacity: .6 !important;
-                }
-    
-                div#technician:hover {
-                    img#technician {
-                        opacity: .8 !important;
-                    }
-                }
-            }
-        }
-    }
+@media (min-width: 768px) {
+	#tiles {
+		.container {
+			.row {
+				flex-direction: row;
+				.tile-container {
+					margin: 0;
+					&:not(:last-child) {
+						margin-right: 1rem;
+					}
+				}
+				.title-tile {
+					margin-right: 1rem;
+					width: 100%;
+				}
+				.video-tile {
+					width: 50%;
+					height: 175px;
+				}
+			}
+		}
+	}
 }
