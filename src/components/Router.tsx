@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
+import './css/main.css';
+
 import MainPage from './main-page/App';
-//import Noice from './main-page/components/Noice';
 
 import ApplicationPage from './application-page/App';
 
@@ -25,8 +26,10 @@ export default class App extends React.Component<any,any>{
                     },
 
                     window: {
-
-                        timestamp: new Date().getTime(),
+                        time: {
+                            timestamp: new Date().getTime(),
+                            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                        },
                         location: window.location,
 
                         inner: {
@@ -66,12 +69,9 @@ export default class App extends React.Component<any,any>{
                             <Route exact path="/">
                                 <MainPage/>
                             </Route>
-                            <Route exact path="/aplikuj">
+                            <Route path={"/aplikuj"}>
                                 <ApplicationPage/>
                             </Route>
-                            {/* <Route exact path="/panel">
-                                {Noice}
-                            </Route> */}
                         </Switch>
                 </div>
             </Router>

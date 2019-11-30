@@ -10,27 +10,38 @@ export default class Header extends React.Component<any, any> {
             scrolled: (window.scrollY > 90) ? "header-scrolled" : "",
             menuOpened: false,
             openTimeout: null,
-            offset: null
+            offset: -75
         };
+
 
         window.addEventListener("resize", () => {
             if (window.innerWidth >= 840)
                 document.getElementsByClassName('nav__menu')[0].setAttribute('style', 'transition: none; display: flex;');
         });
-        
-        window.addEventListener('scroll', () => {
-            this.setState({
-                scrolled: (window.scrollY > 90) ? "header-scrolled" : ""
+
+        if (!props.transparent)
+            window.addEventListener('scroll', () => {
+                this.setState({
+                    scrolled: (window.scrollY > 90) ? "header-scrolled" : ""
+                });
             });
-        });
+
 
         window.matchMedia("(prefers-color-scheme: dark)").addListener(e => e.matches && document.body.classList.add('dark-theme'));
         window.matchMedia("(prefers-color-scheme: light)").addListener(e => e.matches && document.body.classList.remove('dark-theme'));
-        
+    
     }
-
-    componentDidMount(){
-        this.setState({offset: -document.getElementsByTagName("header")[0].clientHeight});
+    
+    componentDidMount() {
+        if (window.location.hash.includes('-scroll'))
+            window.scrollTo({
+                top: document.querySelectorAll(window.location.hash.replace('-scroll', ''))[0].getBoundingClientRect().top + this.state.offset,
+                behavior: "smooth"
+            });
+        if (this.props.transparent)
+            this.setState({
+                scrolled: "header-scrolled"
+            });
     }
 
     menu(open:boolean) {
@@ -76,16 +87,21 @@ export default class Header extends React.Component<any, any> {
                         <div className="bar"></div>
                     </div>
 
-                    {/* TODO: przerobić ten opętany nav menu */}
 
                     <ul className="nav__menu">
-                        <Link to="informations" spy={true} onClick={() => this.menu(false)} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
+                        <Link to="informations" spy={true} onClick={() => {
+                            if (document.querySelector("#informations") === null)
+                                window.location.href = "/#informations-scroll";
+
+                            this.menu(false);
+                        }} smooth="easeInOutCubic" offset={this.state.offset} duration={700}> 
                             <span className="header-button">Informacje</span>
                         </Link>
+                            
                         
-                        <Link to="gallery" spy={true} onClick={() => this.menu(false)} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
+                        <a href="/gallery" style={{textDecoration: 'none'}}>
                             <span className="header-button">Galeria</span>
-                        </Link>
+                        </a>
 
                         {/* <Link to="application" spy={true} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
                             <span className="header-button">O szkole</span>
@@ -95,7 +111,12 @@ export default class Header extends React.Component<any, any> {
                             <span className="header-button">Aplikuj</span>
                         </a>
 
-                        <Link to="contact" spy={true} onClick={() => this.menu(false)} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
+                        <Link to="contact" spy={true} onClick={() => {
+                            if (document.querySelector("#contact") === null)
+                                window.location.href = "/#contact-scroll";
+                            
+                            this.menu(false)
+                        }} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
                             <span className="header-button">Kontakt</span>
                         </Link>
 

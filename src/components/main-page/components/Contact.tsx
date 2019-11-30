@@ -1,5 +1,5 @@
 import React from 'react';
-import { showVersion ,version, prealpha } from '../../../../package.json';
+
 
 export default class Contact extends React.Component<any, any> {
 	constructor(props:any) {
@@ -29,7 +29,7 @@ export default class Contact extends React.Component<any, any> {
 						testowy opis zobaczyc jak to wyjdzie: marchewka lorem ipsum kino jest zdjęciem, zycie jest bledem elo. -- testowy opis zobaczyc jak to wyjdzie: marchewka lorem ipsum kino jest zdjęciem, zycie jest bledem elo.
 					</div>
 					<div className="form-grid">
-					<form action="#footer" onSubmit={() => {
+					<form onSubmit={() => {
 							// let a = new Array();
 							// document.querySelectorAll('input').forEach(d => a.push(d.classList, d.value));
 							// alert(a);
@@ -104,19 +104,6 @@ export default class Contact extends React.Component<any, any> {
 						</div>
 					</div>
 					</div>
-				</div>
-
-
-
-				{(showVersion) ? <span className="build-version">{version} {(prealpha) ? "PREALPHA VERSION" : null}</span> : null}
-				<div className="dark-theme__input">
-					<input id="themeChanger" type="checkbox" defaultChecked={true} onChange={e => {
-						if (e.currentTarget.checked)
-							document.body.classList.add("dark-theme");
-						else
-							document.body.classList.remove("dark-theme");
-					}}/>
-					<label htmlFor="themeChanger">dark-theme</label>
 				</div>
 			</div>
 		);

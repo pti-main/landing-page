@@ -1,21 +1,15 @@
 import React from 'react';
 
-import Header from './components/Header';
+import Header from '../shared/components/Header';
+import Footer from '../shared/components/Footer';
+
 import Informations from './components/Informations';
 import Contact from './components/Contact';
 import Hero from './components/Hero';
 import Reasons from './components/Reasons';
 import Tiles from './components/Tiles';
 
-require('./css/main.css');
-
 export default class App extends React.Component<any,any>{
-    constructor(props:any) {
-        super(props);
-        this.state = {
-            scrolled: false,
-        }
-
         /*
 
         [...document.styleSheets].filter(s => !s.disabled).map(s => [...s.rules].filter(r => r instanceof CSSStyleRule).length).reduce((a, b) => a + b);
@@ -36,11 +30,9 @@ export default class App extends React.Component<any,any>{
         getCount(document.body, true);
 
         */
-    }
-
     render() {
         return(
-            <div className="pti__container">
+            <div className="pti__container" id="main-page">
                 <Header/>
 
                 <Hero/>
@@ -52,6 +44,8 @@ export default class App extends React.Component<any,any>{
                 <Tiles/>
                 
                 <Contact/>
+
+                <Footer/>
             </div>
         );
     }

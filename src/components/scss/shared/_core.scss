@@ -9,10 +9,14 @@ body {
     overflow-x: hidden;
     font-family: $font;
     user-select: none;
+    min-height: 100vh;
+    z-index: -1;
+
+    background-color: color(background-main);
 
     .dark-theme {
-      background-color: color(dark);
-      color: color(text-main);
+        background-color: color(dark);
+        color: color(text-main);
     }
 }
 

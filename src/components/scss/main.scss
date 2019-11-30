@@ -1,0 +1,15 @@
+// shared resources
+@import './shared/coreVariables.scss';
+@import './shared/core.scss';
+@import './shared/header.scss';
+@import './shared/footer.scss';
+
+// main-page component
+@import './main-page/hero.scss';
+@import './main-page/informations.scss';
+@import './main-page/reasons.scss';
+@import './main-page/tiles.scss';
+@import './main-page/contact.scss';
+
+// application-page component
+@import './application-page/intro.scss';

@@ -6,6 +6,7 @@ export default function Hero() {
     return (
         <div id="hero" className="hero">
             <img className="hero__video" src="/img/bg.jpg" alt=""/>
+            <div className="overlay"></div>
             <video style={{opacity: 0}} className="hero__video" preload="metadata" playsInline loop muted onLoadedMetadata={(e) => {
                 e.currentTarget.play()
                     .then(() => {
@@ -27,7 +28,7 @@ export default function Hero() {
                 <h1 className="title">
                     Lorem{(window.innerWidth < 840) ? <br/> : " "}
                     <TextLoop className="title__textloop" interval={3500} noWrap={true} adjustingSpeed={0} springConfig={{ stiffness: 340, damping: 30 }}>
-                        <span>marcherka </span>
+                        <span>testowa zmiana</span>
                         <span>triggered</span>
                         <span>rozsierdzony</span>
                         <span>*wklej tu tekst*</span>
