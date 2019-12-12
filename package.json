@@ -1,7 +1,7 @@
 {
   "name": "pti-main-page",
   "showVersion": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "prealpha": true,
   "private": true,
   "dependencies": {

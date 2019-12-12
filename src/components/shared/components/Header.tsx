@@ -7,7 +7,7 @@ export default class Header extends React.Component<any, any> {
         
         this.state = {
             panelURI: null, //"https://" + window.location.hostname,
-            scrolled: (window.scrollY > 90) ? "header-scrolled" : "",
+            scrolled: (props.transparent) ? "header-scrolled" : (window.scrollY > 90) ? "header-scrolled" : "",
             menuOpened: false,
             openTimeout: null,
             offset: -75
@@ -37,10 +37,6 @@ export default class Header extends React.Component<any, any> {
             window.scrollTo({
                 top: document.querySelectorAll(window.location.hash.replace('-scroll', ''))[0].getBoundingClientRect().top + this.state.offset,
                 behavior: "smooth"
-            });
-        if (this.props.transparent)
-            this.setState({
-                scrolled: "header-scrolled"
             });
     }
 
@@ -75,9 +71,9 @@ export default class Header extends React.Component<any, any> {
         return (
             <header className={this.state.scrolled}>
                 <nav id="nav" className="container">
-                    <Link to="hero" spy={true} duration={700} smooth="easeInOutCubic"> 
+                    <Link to="hero" onClick={() => (window.location.pathname !== "/") ? window.location.pathname = "/" : null} spy={true} duration={700} smooth="easeInOutCubic"> 
                         <div className="logo">
-                                <img src="./img/logo_pti.png" alt=""/>
+                            <img src="./img/logo_pti.png" alt=""/>
                         </div>
                     </Link>
                     

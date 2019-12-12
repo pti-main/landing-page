@@ -27,6 +27,9 @@ body {
 }
 
 /*CORE ELEMENTS*/
+.noTransition {
+  transition: none !important;
+}
 .container {
     padding: 0 2rem;
     margin-left: auto;

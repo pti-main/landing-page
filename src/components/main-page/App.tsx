@@ -30,6 +30,11 @@ export default class App extends React.Component<any,any>{
         getCount(document.body, true);
 
         */
+
+    componentDidMount() {
+        setTimeout(() => document.body.classList.remove("noTransition"), 500);
+    }
+
     render() {
         return(
             <div className="pti__container" id="main-page">
