@@ -10,7 +10,8 @@ div#tabs {
     .tab-selector {
       cursor: pointer;
 	  padding: .75rem 1.75rem;
-	  transition: background-color 150ms ease-in-out;
+	  transition: background-color 150ms ease-in-out,
+	  			opacity 500ms ease;
 	  background-color: lighten(color(dark), 10);
 	  color: color(text-main);
 	  border-radius: $br $br 0 0;
@@ -21,6 +22,10 @@ div#tabs {
 	  &.active {
 		background-color: darken(color(text-main), 15);
 		color: color(dark);
+	  }
+	  &.disabled {
+		  opacity: 0.5;
+		  cursor: not-allowed;
 	  }
     }
   }
@@ -34,6 +39,9 @@ div#tabs {
 			transform: translateY(0px);
 			transition: opacity 250ms ease-in-out,
 					transform 650ms cubic-bezier(.06,.39,0,1);
+			text-align: left;
+			color: color(dark);
+			
 			&.fadeIn {
 				opacity: 1;
 				transform: translateY(0px);
@@ -42,7 +50,23 @@ div#tabs {
 				opacity: 0;
 				transform: translateY(10px);
 			}
-	  	}
+		}
+		// this was written while i was driving through vienna, so this can be tricky (ilya chang' this plz)
+		.interests {
+			.interests-span {
+				width: 100%;
+				display: flex;
+				font-weight: 700;
+				margin: 1.5rem 0 0 2rem;
+				font-size: 1.2rem;
+			}
+			form {
+				margin: 1rem 0 0 2.5rem;
+				label {
+					padding-left: .5rem;
+				}
+			}
+		}
   }
 }
 
