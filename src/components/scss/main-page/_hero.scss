@@ -172,7 +172,7 @@
 					transform: translateX(-50%);
 				}
 
-				.buttons+.buttons {
+				a + a {
 					margin-top: 1.2rem;
 				}
 			}
@@ -200,9 +200,6 @@
 				margin-top: 3rem;
 
 
-				.buttons+.buttons {
-					margin-left: 1.5rem;
-				}
 			}
 		}
 	}

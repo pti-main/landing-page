@@ -73,7 +73,7 @@ export default class Header extends React.Component<any, any> {
                 <nav id="nav" className="container">
                     <Link to="hero" onClick={() => (window.location.pathname !== "/") ? window.location.pathname = "/" : null} spy={true} duration={700} smooth="easeInOutCubic"> 
                         <div className="logo">
-                            <img src="./img/logo_pti.png" alt=""/>
+                            <img src="/img/logo_pti.png" alt=""/>
                         </div>
                     </Link>
                     
@@ -103,8 +103,8 @@ export default class Header extends React.Component<any, any> {
                             <span className="header-button">O szkole</span>
                         </Link> */}
 
-                        <a href="/aplikuj" style={{textDecoration: 'none'}}>
-                            <span className="header-button">Aplikuj</span>
+                        <a href="/aktualnosci" style={{textDecoration: 'none'}}>
+                            <span className="header-button">Aktualności</span>
                         </a>
 
                         <Link to="contact" spy={true} onClick={() => {
@@ -116,11 +116,9 @@ export default class Header extends React.Component<any, any> {
                             <span className="header-button">Kontakt</span>
                         </Link>
 
-                        {/* TODO: tutaj chyba musi nastąpić redirect do innego serwera, bo stare eventlistenery dalej dzialaja */}
-                        <a href={this.state.panelURI} style={{textDecoration: 'none'}}>
-                            <button className="panel-login" title="Funkcja 'Zaloguj' będzie prowadziła do panelu użytkownika.
-                            Panel zostanie wprowadzony w nowszej wersji strony." disabled>
-                                Zaloguj
+                        <a href="/aplikuj" style={{textDecoration: 'none'}}>
+                            <button className="panel-login">
+                                Aplikuj
                             </button>
                         </a>
                     </ul>

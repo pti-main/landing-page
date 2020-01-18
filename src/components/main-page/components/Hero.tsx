@@ -20,7 +20,7 @@ export default function Hero() {
                     .catch((err) => console.log(`User can't play video, because no. (really the problem is: rejected promise: "${err}" (propably user have turned on power saving mode))`));
             }}> 
                 <source data-src="/img/bg-video.mp4" src="/img/bg-video.mp4" type="video/mp4"></source>
-                <source data-src="/img/bg-video.mp4" src="/img/bg-video_reduced.mp4" type="video/mp4"></source>
+                <source data-src="/img/bg-video_reduced.mp4" src="/img/bg-video_reduced.mp4" type="video/mp4"></source>
                 <source data-src="/img/bg-video.webm" src="/img/bg-video.webm" type="video/webm"></source>
             </video>
 

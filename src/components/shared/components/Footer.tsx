@@ -5,7 +5,6 @@ export default class Footer extends React.Component<any, any> {
     render() {
       return (
         <footer id="pti_footer">
-            <span>awdadawdadegbawhefladsfds</span>
             {(showVersion) ? <span className="build-version">{version} {(prealpha) ? "PREALPHA VERSION" : null}</span> : null}
 				<div className="dark-theme__input">
 					<input id="themeChanger" type="checkbox" defaultChecked={true} onChange={e => {

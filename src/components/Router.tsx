@@ -2,77 +2,39 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import './css/main.css';
-
 import MainPage from './main-page/App';
-
 import ApplicationPage from './application-page/App';
+import NewsPage from './news-page/App';
+import Page404 from './404-error/App';
+
+import Analytics from './Analytics';
+
 
 export default class App extends React.Component<any,any>{
-    constructor(props:any) {
-        super(props);
 
-        fetch(`http://${document.domain + ":3001"}/analytics/api/v1/collect/data`, {
-            method: "POST",
-            cache: "no-cache",
-            headers: {
-                "x-analytics-req": "pti-analytics",
-                "Content-Type": "application/json;charset=UTF-8"
-            },
-            body: JSON.stringify({
-                    screen: {
-                        width: window.screen.width,
-                        height: window.screen.height,
-                        pixelRatio: window.devicePixelRatio
-                    },
-
-                    window: {
-                        time: {
-                            timestamp: new Date().getTime(),
-                            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-                        },
-                        location: window.location,
-
-                        inner: {
-                            height: window.innerHeight,
-                            width: window.innerWidth
-                        },
-
-                        outer: {
-                            height: window.outerHeight,
-                            width: window.outerWidth
-                        }
-                    },
-
-                    user: {
-                        agent: navigator.userAgent,
-                        
-                        platform: navigator.platform,
-                        language: navigator.language,
-                        vendor: navigator.vendor,
-
-                        cookieEnabled: navigator.cookieEnabled,
-
-                        browser: {
-                            product: navigator.product,
-                            version: navigator.appVersion
-                        }
-                    }
-                })
-            });
+    componentWillMount() {
+        document.body.classList['add']('dark-theme');
     }
+    
+    componentDidMount() {
+        setTimeout(_ => document.body.classList.remove('noTransition'), 500);
 
+        Analytics();
+    }
+ 
     render(){
         return(
             <Router>
                 <div className="site__router">
-                        <Switch>
-                            <Route exact path="/">
-                                <MainPage/>
-                            </Route>
-                            <Route path={"/aplikuj"}>
-                                <ApplicationPage/>
-                            </Route>
-                        </Switch>
+                    <Switch>
+                        <Route exact path="/" component={MainPage}/>
+                        <Route path={"/aplikuj"} component={ApplicationPage}/>
+                        <Route path={"/aktualnosci"} component={NewsPage}/>
+                        <Route path={"/aktualnosci/:id"}>
+                            <NewsPage/>
+                        </Route>
+                        <Route component={Page404}/>
+                    </Switch>
                 </div>
             </Router>
         );
