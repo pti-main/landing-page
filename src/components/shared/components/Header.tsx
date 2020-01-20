@@ -25,11 +25,6 @@ export default class Header extends React.Component<any, any> {
                     scrolled: (window.scrollY > 90) ? "header-scrolled" : ""
                 });
             });
-
-
-        window.matchMedia("(prefers-color-scheme: dark)").addListener(e => e.matches && document.body.classList.add('dark-theme'));
-        window.matchMedia("(prefers-color-scheme: light)").addListener(e => e.matches && document.body.classList.remove('dark-theme'));
-    
     }
     
     componentDidMount() {

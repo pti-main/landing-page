@@ -1,15 +1,93 @@
 div#article {
-    div.img {
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 100%;
-        height: 180px;
-        text-align: center;
-        background-blend-mode: darken;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-wrap: break-word;
+    text-align: left;
+    /* padding: 0 15rem; */
+    // width: 80%;
+    // max-width: 550px;
+
+    .article-container {
+        width: 80%;
+        max-width: 600px;
+        margin: 0 auto;
     }
-    span.title {
-        top: 50%;
-        transform: translate(-50%, -50%);
+
+    div.image-container {
+        max-height: 300px;
+        width: 100%;
+        overflow: hidden;
+
+        div.img {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            width: 100%;
+            height: 300px;
+        }
+    }
+
+    .imga-container {
+        margin: 2rem 0;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        .imga {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .newline {
+        margin: 1rem 0;
+        font-size: 18px;
+        user-select: text;
+    }
+
+    .article-info {
+        margin: 1.5rem 0 1rem .5rem;
+        user-select: text;
+
+        .article-title {
+            font-weight: 600;
+            font-size: 1.75rem;
+            
+        }
+    }
+
+    hr {
+        width: 100%;
+        border-radius: $br;
+        opacity: .5;
+        margin-top: 2rem;
+        border: 1px solid rgb(128, 128, 128);
+    }
+
+
+    .read-more_title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        // text-align: center;
+    }
+
+    #articles {
+        margin-top: 2rem;
+        width: 100%;
+        // transform: translateX(-15%);
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 786px) {
+    .imga-container, .image-container {
+        width: 110vw !important;
+        transform: translateX(-20%);
+        overflow: hidden;
+        height: 40vh !important;
     }
 }

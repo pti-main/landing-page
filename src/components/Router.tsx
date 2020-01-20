@@ -19,6 +19,9 @@ export default class App extends React.Component<any,any>{
     componentDidMount() {
         setTimeout(_ => document.body.classList.remove('noTransition'), 500);
 
+        window.matchMedia("(prefers-color-scheme: dark)").addListener(e => e.matches && document.body.classList.add('dark-theme'));
+        window.matchMedia("(prefers-color-scheme: light)").addListener(e => e.matches && document.body.classList.remove('dark-theme'));
+
         Analytics();
     }
  

@@ -8,17 +8,17 @@ div#error-page {
     font-size: 1.75rem;
 
     @keyframes gradientAnimation { 
-        0%{background-position:0% 50%}
-        50%{background-position:100% 50%}
-        100%{background-position:0% 50%}
+        0%{background-position:25% 50%}
+        50%{background-position:75% 50%}
+        100%{background-position:25% 50%}
     }
 
     span#error-id {
-        background: linear-gradient(to right, lighten(color(accent), 5), lighten(color(accent), 20));
+        animation: gradientAnimation 6s ease-in-out infinite;
+            background: linear-gradient(to right, darken(lightcoral, 5), lighten(color(accent), 20), darken(lightgreen, 10));
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        background-size: 200% 200%;
-        animation: gradientAnimation 5s ease infinite;
+        background-size: 300% 300%;
         //font-size: 15rem;
         font-size: 10rem;
         font-weight: bolder;
@@ -27,6 +27,21 @@ div#error-page {
     code {
         text-align: center;
         width: 80%;
+    }
+    a {
+        text-decoration: none;
+        color: color(text-main);
+        .back-button {
+            animation: gradientAnimation 6s ease-in-out infinite;
+            background: linear-gradient(to right, darken(lightcoral, 5), lighten(color(accent), 20), darken(lightgreen, 10));
+            background-size: 300% 300%;
+            margin-top: 2rem;
+            font-size: 1.125rem;
+            font-family: monospace;
+            padding: .75rem 2rem;
+            font-weight: 900;
+            border-radius: $br;
+        }
     }
 }
 
