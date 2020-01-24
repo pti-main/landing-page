@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Link, BrowserRouter as Router } from 'react-router-dom';
 
 export default class App extends React.Component<any, any> {
     async componentDidMount() {

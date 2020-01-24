@@ -42,11 +42,13 @@ export default class Header extends React.Component<any, any> {
                 setTimeout(() => {
                     document.getElementsByClassName('nav__menu')[0].classList.add('menu--opened');
                     document.getElementsByClassName('nav__menu-open')[0].classList.add('menu--opened');
+                    document.querySelector('html').classList.add("disable-scroll");
                     // document.querySelectorAll(".nav__menu-open .bar").forEach((el) => el.setAttribute('style', 'background: #1d1e22;'));
                 }, 50);
             } else {
                 document.getElementsByClassName('nav__menu')[0].classList.remove('menu--opened');
                 document.getElementsByClassName('nav__menu-open')[0].classList.remove('menu--opened');
+                document.querySelector('html').classList.remove("disable-scroll");
                 
                 clearTimeout(this.state.openTimeout);
 
@@ -90,7 +92,7 @@ export default class Header extends React.Component<any, any> {
                         </Link>
                             
                         
-                        <a href="/gallery" style={{textDecoration: 'none'}}>
+                        <a href="/galeria" style={{textDecoration: 'none'}}>
                             <span className="header-button">Galeria</span>
                         </a>
 

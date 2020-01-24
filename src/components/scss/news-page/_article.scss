@@ -45,12 +45,12 @@ div#article {
     .newline {
         margin: 1rem 0;
         font-size: 18px;
-        user-select: text;
+        user-select: auto;
     }
 
     .article-info {
         margin: 1.5rem 0 1rem .5rem;
-        user-select: text;
+        user-select: auto;
 
         .article-title {
             font-weight: 600;

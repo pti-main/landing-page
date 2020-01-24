@@ -33,6 +33,13 @@ export default class Contact extends React.Component<any, any> {
 							// let a = new Array();
 							// document.querySelectorAll('input').forEach(d => a.push(d.classList, d.value));
 							// alert(a);
+
+							fetch(`http://${document.domain + ":3001"}/contact/api/v1/post/`, {
+								method: "post",
+								body: JSON.stringify({
+									contact: "pogchmamp"
+								})
+							}).then(_ => console.log("gittiwaetjkw")).catch(_ => console.warn("oafjhjawbhfmd,"));
 						}}>
 						<input className="input-title" type="text" placeholder="Tytuł"/>
 						<input className="input-email" required type="email" 

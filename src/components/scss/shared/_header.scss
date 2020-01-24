@@ -29,6 +29,7 @@ header {
         display: flex;
         align-items: center;
         justify-content: center;
+        transition: filter 250ms ease-in-out;
         .logo {
             width: auto;
             height: 80%;
@@ -37,6 +38,7 @@ header {
             align-items: center;
             justify-content: center;
             cursor: pointer;
+
             img {
                 height: 100%;
                 width: auto;
@@ -235,6 +237,11 @@ header {
             a {
                 padding: .75rem 1.25rem;
                 height: 60px;
+
+                margin-left: 0;
+                &:last-of-type {
+                    margin-left: 0;
+                }
                 //lol still talking to her
                 span {
                     transition: color 300ms ease-in-out;

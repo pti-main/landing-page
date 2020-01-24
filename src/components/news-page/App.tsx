@@ -1,5 +1,4 @@
 import React from 'react';
-import {BrowserRouter as Router} from 'react-router-dom';
 
 import Header from '../shared/components/Header';
 import Footer from '../shared/components/Footer';
@@ -18,6 +17,8 @@ export default class App extends React.Component<any, any> {
                   this.props.location.pathname.substr(1).replace('aktualnosci/', '') === "aktualnosci") 
                     ? <><div className="title">Aktualności</div><Articles/></> : <Article path={this.props.location.pathname}/>}
                 {/* <Route path={} component={}> */}
+
+                <Footer/>
             </div>
         );
     }

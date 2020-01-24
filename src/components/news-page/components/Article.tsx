@@ -33,7 +33,8 @@ export default class App extends React.Component<any, any> {
                             console.log(item, images[i]);
                         }
 
-                        content.push(<div className="newline" >{item}</div>);
+                        return content.push(<div className="newline" key={`${i}${Math.random()}`}>{item}</div>);
+                        
                     });
 
                     const getMeRandomElements = (sourceArray:any, neededElements:any) => {
@@ -83,7 +84,7 @@ export default class App extends React.Component<any, any> {
                 }
 
             if (!matched)
-                ReactDOM.render(<Error404/>, document.querySelector('div.site__router'));
+                ReactDOM.render(<Error404/>, document.querySelector('div.pti__container#news-page'));
         }
     }
 

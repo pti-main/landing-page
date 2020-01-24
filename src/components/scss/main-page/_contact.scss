@@ -50,7 +50,7 @@
                     background-color: color(text-main);
                     border: 2px solid darken(color(text-main), 5);
                     transition: all 300ms ease-in-out;
-                    font-family: "Source Sans Pro";
+                    font-family: $font;
                     &:focus {
                        outline: none;
                        border-color: color(accent);
@@ -74,7 +74,7 @@
                 }
                 .input-button {
                     grid-area: submit;
-                    font-family: "Source Sans Pro";
+                    font-family: $font;
                     width: 100%;
                     outline: none;
                     border: none;

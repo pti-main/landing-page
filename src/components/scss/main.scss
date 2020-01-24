@@ -12,13 +12,16 @@
 @import './main-page/contact.scss';
 
 // application-page component
-@import './application-page/intro.scss';
-@import './application-page/tabs.scss';
+@import './application-page/menu.scss';
+@import './application-page/form.scss';
 
 // news-page component
-@import './news-page/_news.scss';
-@import './news-page/_articles.scss';
-@import './news-page/_article.scss';
+@import './news-page/news.scss';
+@import './news-page/articles.scss';
+@import './news-page/article.scss';
+
+// gallery-page component
+@import './gallery-page/gallery.scss';
 
 // error-page component
-@import './error-page/_error.scss';
+@import './error-page/error.scss';

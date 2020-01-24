@@ -1,6 +1,6 @@
 /*CORE*/
+// @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900&display=swap');
-
 html,
 body {
     margin: 0;
@@ -18,6 +18,9 @@ body {
         background-color: color(dark);
         color: color(text-main);
     }
+}
+html.disable-scroll {
+  overflow-y: hidden;
 }
 
 *,
