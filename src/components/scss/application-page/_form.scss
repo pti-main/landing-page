@@ -1,7 +1,6 @@
 #form {
-    width: 80%;
-    height: 100vh;
-    padding: 1rem;
+    width: 100%;
+    min-height: 100vh;
     color: color(text-main);
     display: flex;
     flex-direction: column;
@@ -9,8 +8,13 @@
     .info {
         font-size: .75rem;
         position: absolute;
-        top: .5rem;
-        left: .5rem;
+        top: 1rem;
+        left: 1rem;
+        opacity: 0;
+        transition: opacity 250ms ease-in-out;
+        &.show {
+            opacity: 1;
+        }
         .link {
             margin-left: 4px;
             cursor: pointer;
@@ -22,27 +26,119 @@
             }
         }
     }
-    .centered {
+    .container {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         height: 100%;
+        // width: 80%;
+        // margin: 0 auto;
         .progress {
-
+            opacity: .5;
+            font-size: 1rem;
+            margin-bottom: .25rem;
         }
         .title {
-
+            font-weight: 600;
+            font-size: 2rem;
+            margin-bottom: 2rem;
         }
         .tiles {
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(150px, 1fr));
+            margin: 0 1rem;
+            grid-template-rows: 1fr;
+            grid-gap: 2rem;
             .tile {
+                border-radius: $br;
+                padding: 1.5rem;
+                border: 2px color(accent) solid;
+                box-shadow: 0 0 0 color(accent);
+                display: flex;
+                text-align: center;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                align-items: center;
+                justify-content: center;
+                box-shadow: none;
+                transition: box-shadow 250ms ease-in-out,opacity 250ms ease-in-out,transform 250ms ease-in-out;
+                position: relative;
+                opacity: .5;
+                cursor: pointer;
+                z-index: 1;
+                &::after {
+                    content: ''; //bg btw
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(to right, lighten(color(accent), 5), darken(color(accent), 5));
+                    opacity: 0;
+                    transition: opacity 250ms ease-in-out; //maybe easing change to S..?
+                    z-index: -1;
+                }
+                &:hover {
+                    box-shadow: 0px 0px 15px color(accent);
+                    opacity: 1;
+                    transform: translateY(-5px);
+                }
 
+                &.selected {
+                    box-shadow: 0px 0px 15px color(accent);
+                    opacity: 1;
+                    .selectedOption {
+                        opacity: 1;
+                    }
+                    &::after {
+                        opacity: 1;
+                    }
+                    &:hover {
+                        transform: translateY(0);
+                    }
+                }
+                
+                .selectedOption {
+                    width: 25px;
+                    height: 25px;
+                    padding: .5rem;
+                    position: absolute;
+                    opacity: 0;
+                    display: flex;
+                    transition: opacity 250ms ease-in-out;
+                    top: .5rem;
+                    right: .5rem;
+                    background: color(text-main);
+                    border-radius: 50%;
+                    svg {
+                        height: 100%;
+                        width: 100%;
+                        color: color(accent);
+                    }
+                }
+                .name {
+                    font-weight: 600;
+                }
+                .icon {
+                    width: 60%;
+                    height: 100%;
+                    padding: 0.5rem;
+                    svg {
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                
             }
         }
         .buttons {
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 2rem;
             .button {
                 display: inline-flex;
                 padding: .75rem 2.5rem;
@@ -53,6 +149,12 @@
                 border-radius: $br;
                 height: 3rem;
                 transition: background 250ms ease-in-out, opacity 250ms ease-in-out;
+
+                &.disabled {
+                    opacity: .5;
+                    cursor: not-allowed;
+                }
+                
                 .arrow {
                     height: 100%;
                     width: 15px;
@@ -83,6 +185,10 @@
                 }
                 &.prev {
                     opacity: 0.5;
+                    .disabled {
+                        display: none;
+                    }
+                    // margin-right: 1rem;
                     & .text {
                         margin-left: 1rem;
                     }
@@ -96,6 +202,38 @@
             }
             .button + .button {
                 margin-left: 1rem;
+            }
+        }
+    }
+}
+@media (max-width: 768px) {
+    #form {
+        .container {
+            .tiles {
+                grid-template-columns: repeat(2,minmax(75px,175px));
+                grid-template-rows: 1fr 1fr;
+                grid-gap: .75rem;
+                .tile {
+                    padding: 0.75rem !important;
+                }
+                .name {
+                    font-size: 0.8rem;
+                }
+                .tile:not(.selected):hover {
+                    box-shadow: none !important;
+                    opacity: 1 !important;
+                    transform: none !important;
+                }
+            }
+            .buttons {
+                .button.prev {
+                    padding: 0.75rem !important;
+                }
+                .button.next {
+                    .text {
+                        margin-right: .75rem !important;
+                    }
+                }
             }
         }
     }

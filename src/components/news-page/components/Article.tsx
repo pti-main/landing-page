@@ -7,7 +7,7 @@ import Error404 from '../../404-error/App';
 const readingTime = require('reading-time');
 
 
-export default class App extends React.Component<any, any> {
+export default class Article extends React.Component<any, any> {
     async componentDidMount() {
         let data = await fetch(`http://${document.domain + ":3001"}/news/api/v1/list/`)
             .then(resp => resp.json())

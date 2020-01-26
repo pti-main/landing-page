@@ -11,9 +11,9 @@ import GalleryPage from './gallery-page/App';
 import Analytics from './Analytics';
 
 
-export default class App extends React.Component<any,any>{
-
-    componentWillMount() {
+export default class Routes extends React.Component<any,any>{
+    constructor(props:any) {
+        super(props);
         document.body.classList['add']('dark-theme');
     }
 

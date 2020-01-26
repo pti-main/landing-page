@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export default class App extends React.Component<any, any> {
+export default class Articles extends React.Component<any, any> {
     async componentDidMount() {
         let elements = [], data = await fetch(`http://${document.domain + ":3001"}/news/api/v1/list/`)
             .then(resp => resp.json())

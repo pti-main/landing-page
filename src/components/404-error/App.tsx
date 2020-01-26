@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class App extends React.Component<any,any>{
+export default class Error extends React.Component<any,any>{
     
     render() {
         return (

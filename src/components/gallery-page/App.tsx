@@ -5,7 +5,7 @@ import Header from '../shared/components/Header';
 import Footer from '../shared/components/Footer';
 
 
-export default class App extends React.Component<any,any> {
+export default class Gallery extends React.Component<any,any> {
 
 
     handleImageClick(i:any) {

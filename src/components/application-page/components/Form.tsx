@@ -1,33 +1,87 @@
 import React from 'react';
 
+import Tiles from "./form-components/Tiles";
+import SelectedProfile from "./form-components/SelectedProfile";
+import SecondStage from './form-components/SecondStage';
+
 export default class Form extends React.Component<any, any> {
+	constructor(props:any) {
+		super(props);
+		this.state = {
+			selectedProfile: null,
+			currentStage: 0,
+			tiles: [
+				{
+					name: "Programowanie Aplikacji",
+					selected: false,
+					icon: <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="img" viewBox="0 0 640 512"><path fill="currentColor" d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/></svg>
+				},
+				{
+					name: "Administracja sieci",
+					selected: false,
+					icon: <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="img" viewBox="0 0 640 512"><path fill="currentColor" d="M640 264v-16c0-8.84-7.16-16-16-16H344v-40h72c17.67 0 32-14.33 32-32V32c0-17.67-14.33-32-32-32H224c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h72v40H16c-8.84 0-16 7.16-16 16v16c0 8.84 7.16 16 16 16h104v40H64c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h160c17.67 0 32-14.33 32-32V352c0-17.67-14.33-32-32-32h-56v-40h304v40h-56c-17.67 0-32 14.33-32 32v128c0 17.67 14.33 32 32 32h160c17.67 0 32-14.33 32-32V352c0-17.67-14.33-32-32-32h-56v-40h104c8.84 0 16-7.16 16-16zM256 128V64h128v64H256zm-64 320H96v-64h96v64zm352 0h-96v-64h96v64z"/></svg>
+				},
+				{
+					name: "Grafika komputerowa",
+					selected: false,
+					icon: <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M167.02 309.34c-40.12 2.58-76.53 17.86-97.19 72.3-2.35 6.21-8 9.98-14.59 9.98-11.11 0-45.46-27.67-55.25-34.35C0 439.62 37.93 512 128 512c75.86 0 128-43.77 128-120.19 0-3.11-.65-6.08-.97-9.13l-88.01-73.34zM457.89 0c-15.16 0-29.37 6.71-40.21 16.45C213.27 199.05 192 203.34 192 257.09c0 13.7 3.25 26.76 8.73 38.7l63.82 53.18c7.21 1.8 14.64 3.03 22.39 3.03 62.11 0 98.11-45.47 211.16-256.46 7.38-14.35 13.9-29.85 13.9-45.99C512 20.64 486 0 457.89 0z"/></svg>
+				},
+				{
+					name: "Web development",
+					selected: false,
+					icon: <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M464 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zM224 416H64V160h160v256zm224 0H288V160h160v256z"/></svg>
+				},
+			],
+		}
+		this.handleTileClick = this.handleTileClick.bind(this);
+	}
+
+	handleButtonClick(action:string, stagesAmount:number) {
+		
+		if (action === "next")
+			this.setState((oldState:any) => {
+				return { currentStage: ((oldState.currentStage + 1) >= stagesAmount - 1 ) ? stagesAmount - 1 : oldState.currentStage + 1 }
+			})
+		else if (action === "prev")
+			this.setState((oldState:any) => {
+				return { currentStage: ((oldState.currentStage - 1) <= 0) ? 0 : oldState.currentStage - 1 }
+			})
+	}
+	
+	
+	handleTileClick(option:string) {
+		this.setState({
+			selectedProfile: option
+		});
+	}
+	
 	render() {
 		let arrowRight = <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" viewBox="0 0 256 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg>;
 		let	arrowLeft = <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" viewBox="0 0 256 512"><path fill="currentColor" d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>;
+		let stages = [
+			<Tiles tiles={this.state.tiles} onClick={this.handleTileClick}/>,
+			<SecondStage/>
+		];
 		return (
 			<div id="form">
-				<div className="info">
-					Aplikujesz na profil: 
-					<span className="link">
-						Administrator sieci
-					</span>
-				</div>
-				<div className="centered">
-					<div className="progress">0/5 questions</div>
-					<div className="title">This is title</div>
-					<div className="tiles">
-						<div className="tile selected"></div>
-						<div className="tile "></div>
-						<div className="tile "></div>
-					</div>
+				{this.state.selectedProfile && <SelectedProfile profile={this.state.selectedProfile}/>}
+				<div className="container">
+					<div className="progress">{this.state.currentStage + 1} / {stages.length} questions</div>
+				
+					{/* { this.state.currentStage === 0 &&  <Tiles onClick={this.handleTileClick}/>}
+					{ this.state.currentStage === 1 &&  <SecondStage/>} */}
+					{/* <Stages s={this.state.currentStage}/> */}
+					
+					{ stages[this.state.currentStage] }
+
 					<div className="buttons">
-						<div className="prev button">
+						{ (this.state.currentStage > 0) && <div className="prev button" onClick={_ => this.handleButtonClick('prev', stages.length)}>
 							<span className="arrow">{arrowLeft}</span>
-							<span className="text">	
+							<span className="text">
 								Wróć
 							</span>
-						</div>
-						<div className="next button">
+						</div> }
+						<div className={`next button ${(this.state.selectedProfile) ? "" : "disabled"}`} onClick={_ => this.handleButtonClick('next', stages.length)}>
 							<span className="text">	
 								Pogczmamp
 							</span>

@@ -30,15 +30,13 @@ export default class Contact extends React.Component<any, any> {
 					</div>
 					<div className="form-grid">
 					<form onSubmit={() => {
-							// let a = new Array();
-							// document.querySelectorAll('input').forEach(d => a.push(d.classList, d.value));
+							let a:any = [];
+							document.querySelectorAll('input').forEach(d => a.push(d.classList, d.value));
 							// alert(a);
 
 							fetch(`http://${document.domain + ":3001"}/contact/api/v1/post/`, {
-								method: "post",
-								body: JSON.stringify({
-									contact: "pogchmamp"
-								})
+								method: "POST",
+								body: a
 							}).then(_ => console.log("gittiwaetjkw")).catch(_ => console.warn("oafjhjawbhfmd,"));
 						}}>
 						<input className="input-title" type="text" placeholder="Tytuł"/>
