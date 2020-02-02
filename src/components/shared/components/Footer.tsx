@@ -22,13 +22,15 @@ export default class Footer extends React.Component<any, any> {
 
     render() {
       return (
-        <footer id="pti_footer">
+        <footer id="pti_footer" onClick={this.props.onClick}>
             {(showVersion) ? <span className="build-version">{version} {(prealpha) ? "PREALPHA VERSION" : null}</span> : null}
 				<div className="dark-theme__input">
 					<input id="themeChanger" type="checkbox" defaultChecked={this.getCookie('darkmode') || false} onChange={e => {
-						this.setCookie('darkmode', e.currentTarget.checked);
+            //this.setCookie('darkmode', e.currentTarget.checked);
+            
+            //document.querySelector('header').classList[(e.currentTarget.checked)? 'remove' : 'add']('white');
 						
-						document.body.classList[(e.currentTarget.checked) ? 'add' : 'remove']("dark-theme");
+						//document.body.classList[(e.currentTarget.checked) ? 'add' : 'remove']("dark-theme");
 					}}/>
 					<label htmlFor="themeChanger">dark-theme</label>
 				</div>

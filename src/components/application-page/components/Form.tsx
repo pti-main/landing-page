@@ -1,8 +1,12 @@
 import React from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 
 import Tiles from "./form-components/Tiles";
-import SelectedProfile from "./form-components/SelectedProfile";
 import SecondStage from './form-components/SecondStage';
+import ProgressButtons from './form-components/ProgressButtons';
+import Summary from './form-components/Summary';
+import Sent from './form-components/Sent';
 
 export default class Form extends React.Component<any, any> {
 	constructor(props:any) {
@@ -10,6 +14,9 @@ export default class Form extends React.Component<any, any> {
 		this.state = {
 			selectedProfile: null,
 			currentStage: 0,
+
+			display: true,
+			
 			tiles: [
 				{
 					name: "Programowanie Aplikacji",
@@ -33,19 +40,35 @@ export default class Form extends React.Component<any, any> {
 				},
 			],
 		}
+		this.handleButtonClick = this.handleButtonClick.bind(this);
+
 		this.handleTileClick = this.handleTileClick.bind(this);
 	}
 
 	handleButtonClick(action:string, stagesAmount:number) {
 		
-		if (action === "next")
-			this.setState((oldState:any) => {
-				return { currentStage: ((oldState.currentStage + 1) >= stagesAmount - 1 ) ? stagesAmount - 1 : oldState.currentStage + 1 }
-			})
-		else if (action === "prev")
-			this.setState((oldState:any) => {
-				return { currentStage: ((oldState.currentStage - 1) <= 0) ? 0 : oldState.currentStage - 1 }
-			})
+		if (action === "next" && this.state.currentStage + 1 >= stagesAmount)
+			return;
+
+		this.setState({
+			display: false
+		});
+		
+		setTimeout(() => {
+
+			if (action === "next")
+				this.setState((oldState:any) => {
+					return { currentStage: ((oldState.currentStage + 1) >= stagesAmount - 1 ) ? stagesAmount - 1 : oldState.currentStage + 1 }
+				})
+			else if (action === "prev")
+				this.setState((oldState:any) => {
+					return { currentStage: ((oldState.currentStage - 1) <= 0) ? 0 : oldState.currentStage - 1 }
+				})
+			
+				this.setState({
+					display: true
+				});
+		}, 350);
 	}
 	
 	
@@ -56,38 +79,52 @@ export default class Form extends React.Component<any, any> {
 	}
 	
 	render() {
-		let arrowRight = <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" viewBox="0 0 256 512"><path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"/></svg>;
-		let	arrowLeft = <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" viewBox="0 0 256 512"><path fill="currentColor" d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"/></svg>;
 		let stages = [
 			<Tiles tiles={this.state.tiles} onClick={this.handleTileClick}/>,
-			<SecondStage/>
+			<SecondStage/>,
+			<Summary/>,
+			<Sent/>
 		];
 		return (
 			<div id="form">
-				{this.state.selectedProfile && <SelectedProfile profile={this.state.selectedProfile}/>}
 				<div className="container">
-					<div className="progress">{this.state.currentStage + 1} / {stages.length} questions</div>
-				
-					{/* { this.state.currentStage === 0 &&  <Tiles onClick={this.handleTileClick}/>}
-					{ this.state.currentStage === 1 &&  <SecondStage/>} */}
-					{/* <Stages s={this.state.currentStage}/> */}
-					
-					{ stages[this.state.currentStage] }
-
-					<div className="buttons">
-						{ (this.state.currentStage > 0) && <div className="prev button" onClick={_ => this.handleButtonClick('prev', stages.length)}>
-							<span className="arrow">{arrowLeft}</span>
-							<span className="text">
-								Wróć
-							</span>
-						</div> }
-						<div className={`next button ${(this.state.selectedProfile) ? "" : "disabled"}`} onClick={_ => this.handleButtonClick('next', stages.length)}>
-							<span className="text">	
-								Pogczmamp
-							</span>
-							<span className="arrow">{arrowRight}</span>
-						</div>
+					<div className="logo">
+						<Link to="/">
+							<img alt=""/>
+						</Link>
 					</div>
+
+					{ (this.state.currentStage + 1) <= (stages.length - 2) &&
+						<CSSTransition
+								in={this.state.display}
+								timeout={350}
+								classNames="fade"
+								appear>
+							<span className="formState">{`${this.state.currentStage + 1} / ${stages.length - 2} questions`}</span>
+						</CSSTransition>}
+
+					<div className="stage">
+						<CSSTransition
+							in={this.state.display}
+							timeout={350}
+							classNames="stage"
+							appear>
+								{ stages[this.state.currentStage] }
+						</CSSTransition>
+					</div>
+
+					<div>
+						<CSSTransition
+								in={this.state.display}
+								timeout={350}
+								classNames="fade"
+								appear>
+								<div>
+									<ProgressButtons selectedProfile={this.state.selectedProfile} handleButtonClick={this.handleButtonClick} currentStage={this.state.currentStage} stagesLength={stages.length}/>
+								</div>
+						</CSSTransition>
+					</div>
+
 				</div>
 			</div>
 		);

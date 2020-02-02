@@ -13,7 +13,47 @@ header {
     &.header-scrolled {
         background: #27292e;
     }
+
+    &.white {
+        box-shadow: 0 0 10px rgba(color(dark), 0.5);
+        
+        &.header-scrolled {
+            background: darken(color(background-main), 10);
+        }
+
+        span {
+            color: color(dark) !important;
+        }
+        #nav ul a span::after {
+            background-color: color(accent) !important;
+        }
+        
+        .bar {
+            background: lighten(color(dark), 15) !important;
+        }
+
+        a {
+            .logo {
+                img {
+                    content: url("/img/logo_pti-dark.png") !important;
+                }
+            }
+        }
+    }
 }
+
+.dark-theme {
+    #nav {
+        ul {
+            a {
+                span {
+                    color: color(text-main);
+                }
+            }
+        }
+    }
+}
+
 
 #nav {
     position: relative;
@@ -28,6 +68,7 @@ header {
         height: 100%;
         display: flex;
         align-items: center;
+        text-decoration: none;
         justify-content: center;
         transition: filter 250ms ease-in-out;
         .logo {
@@ -42,6 +83,7 @@ header {
             img {
                 height: 100%;
                 width: auto;
+                content: url("/img/logo_pti.png");
             }
         }
     }
@@ -104,7 +146,7 @@ header {
             border: none;
             padding: 0.75rem 1.5rem;
             // margin-left: 1.75rem;
-            color: white;
+            color: color(text-main);
             border-radius: $br;
             filter: none;
             cursor: pointer;
@@ -165,7 +207,7 @@ header {
 
             &.menu--opened {
                 .bar {
-                    background: darken(color(accent), 5);
+                    background: darken(color(accent), 5) !important;
 
                     &:nth-child(1) {
                         //500+
@@ -221,7 +263,7 @@ header {
             transition: background-color 300ms ease-in-out;
             background-color: color(background-main);
             opacity: 1;
-            display: none;
+            display: flex;
             top: 0;
             left: 0;
             width: 100vw;

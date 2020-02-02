@@ -20,17 +20,17 @@ export default class Tiles extends React.Component<any, any> {
 		//   tiles: tilesCopy
 		// });
 	}
-	
+
 	render() {
 		return (
-			<>
+			<div>
 				<div className="title">
-				Wybierz profil klasy
+					Wybierz profil klasy
 				</div>
 				<div className="tiles">
 					{this.props.tiles.map((t:any, index:number) => <Tile key={t.name} {...t} clickHandler={() => this.handleClick(t.name, index)}/>)}
 				</div>
-			</>
+			</div>
 		);
 	}
 }

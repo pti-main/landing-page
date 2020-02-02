@@ -1,126 +1,110 @@
-import React from 'react';
-import { Link } from "react-scroll";
+import React, { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
-export default class Header extends React.Component<any, any> {
-    constructor(props:any) {
-        super(props);
+const Header = (props:any) => {
+    const [ menuOpened, setMenuOpened ] = useState(false);
+    const [ navClasses, setNavClasses ] = useState("");
+
+    let nav__menu = useRef(null);
+    let nav__button = useRef(null);
+
+    let resizeHandler = () => {
+        if (window.innerWidth >= 768)
+            document.querySelector('html').classList.remove("disable-scroll");
+    }
+
+    const scrollHandler = () => {
+        let classes:string = (window.scrollY > 90 || props.transparent) ? "header-scrolled" : "";
+        if ((!props.transparent ? window.scrollY > 90 : true) && !props.darkTheme) classes += " white";
+        if (navClasses !== classes)
+            setNavClasses(classes);
+    }
+
+    const menu = (open:boolean) => {
+        if (window.innerWidth > 768) 
+            return;
+
+        let action:string = (open) ? "add" : "remove";
         
-        this.state = {
-            panelURI: null, //"https://" + window.location.hostname,
-            scrolled: (props.transparent) ? "header-scrolled" : (window.scrollY > 90) ? "header-scrolled" : "",
-            menuOpened: false,
-            openTimeout: null,
-            offset: -75
-        };
-
-
-        window.addEventListener("resize", () => {
-            if (window.innerWidth >= 840)
-                document.getElementsByClassName('nav__menu')[0].setAttribute('style', 'transition: none; display: flex;');
-        });
-
-        if (!props.transparent)
-            window.addEventListener('scroll', () => {
-                this.setState({
-                    scrolled: (window.scrollY > 90) ? "header-scrolled" : ""
-                });
-            });
-    }
-    
-    componentDidMount() {
-        if (window.location.hash.includes('-scroll'))
-            window.scrollTo({
-                top: document.querySelectorAll(window.location.hash.replace('-scroll', ''))[0].getBoundingClientRect().top + this.state.offset,
-                behavior: "smooth"
-            });
+        nav__menu.current.classList[action]('menu--opened');
+        nav__button.current.classList[action]('menu--opened');
+        
+        if (open)
+            document.querySelector('html').classList.add("disable-scroll");
+        else
+            document.querySelector('html').classList.remove("disable-scroll");
+        
+        setMenuOpened(open);
     }
 
-    menu(open:boolean) {
-        if (window.innerWidth <= 840) {
-            if (open) {
-                document.getElementsByClassName('nav__menu')[0].setAttribute('style', 'display: flex;');
-                setTimeout(() => {
-                    document.getElementsByClassName('nav__menu')[0].classList.add('menu--opened');
-                    document.getElementsByClassName('nav__menu-open')[0].classList.add('menu--opened');
-                    document.querySelector('html').classList.add("disable-scroll");
-                    // document.querySelectorAll(".nav__menu-open .bar").forEach((el) => el.setAttribute('style', 'background: #1d1e22;'));
-                }, 50);
-            } else {
-                document.getElementsByClassName('nav__menu')[0].classList.remove('menu--opened');
-                document.getElementsByClassName('nav__menu-open')[0].classList.remove('menu--opened');
-                document.querySelector('html').classList.remove("disable-scroll");
-                
-                clearTimeout(this.state.openTimeout);
+    scrollHandler();
 
-                // document.querySelectorAll(".nav__menu-open .bar").forEach((el) => el.setAttribute('style', ''));
-                this.setState({
-                    openTimeout: setTimeout(() => document.getElementsByClassName('nav__menu')[0].setAttribute('style', 'display: none;'), 650)
-                });
-            }
-            this.setState({
-                menuOpened: !this.state.menuOpened
-            });
+    useEffect(() => {
+        
+        document.querySelector('html').classList.remove("disable-scroll");
+
+        window.addEventListener("resize", resizeHandler, false);
+        if (!props.transparent) window.addEventListener('scroll', scrollHandler, false);
+        return () => {
+            window.removeEventListener("resize", resizeHandler, false);
+            if (!props.transparent) window.removeEventListener('scroll', scrollHandler, false);
         }
-    }
-    
-    render() {
+    });
 
-        return (
-            <header className={this.state.scrolled}>
-                <nav id="nav" className="container">
-                    <Link to="hero" onClick={() => (window.location.pathname !== "/") ? window.location.pathname = "/" : null} spy={true} duration={700} smooth="easeInOutCubic"> 
-                        <div className="logo">
-                            <img src="/img/logo_pti.png" alt=""/>
-                        </div>
-                    </Link>
-                    
-                    <div className="nav__menu-open" onClick={() => this.menu((!this.state.menuOpened))}>
-                        <div className="bar"></div>
-                        <div className="bar"></div>
-                        <div className="bar"></div>
+    const hashScrollHandler = (el:any) => {
+        if ((el.getBoundingClientRect().top - 75) !== 0)
+            window.scrollTo({
+                behavior: "smooth",
+                top: el.getBoundingClientRect().top + window.pageYOffset - 75
+            });
+    }
+
+    return (
+        <header className={navClasses}>
+            <nav id="nav" className="container">
+
+                <HashLink to="/#hero" scroll={hashScrollHandler}>
+                    <div className="logo">
+                        <img alt="Logo PTI"/>
                     </div>
+                </HashLink>
+                
+                <div ref={nav__button} className="nav__menu-open" onClick={() => menu(!menuOpened)}>
+                    <div className="bar"/>
+                    <div className="bar"/>
+                    <div className="bar"/>
+                </div>
 
 
-                    <ul className="nav__menu">
-                        <Link to="informations" spy={true} onClick={() => {
-                            if (document.querySelector("#informations") === null)
-                                window.location.href = "/#informations-scroll";
+                <ul ref={nav__menu} className="nav__menu">
 
-                            this.menu(false);
-                        }} smooth="easeInOutCubic" offset={this.state.offset} duration={700}> 
-                            <span className="header-button">Informacje</span>
-                        </Link>
-                            
+                    <HashLink to="/#informations" scroll={hashScrollHandler}>
+                        <span className="header-button">Informacje</span>
+                    </HashLink>
                         
-                        <a href="/galeria" style={{textDecoration: 'none'}}>
-                            <span className="header-button">Galeria</span>
-                        </a>
+                    
+                    <Link to="/galeria">
+                        <span className="header-button">Galeria</span>
+                    </Link>
 
-                        {/* <Link to="application" spy={true} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
-                            <span className="header-button">O szkole</span>
-                        </Link> */}
 
-                        <a href="/aktualnosci" style={{textDecoration: 'none'}}>
-                            <span className="header-button">Aktualności</span>
-                        </a>
+                    <Link to="/aktualnosci">
+                        <span className="header-button">Aktualności</span>
+                    </Link>
 
-                        <Link to="contact" spy={true} onClick={() => {
-                            if (document.querySelector("#contact") === null)
-                                window.location.href = "/#contact-scroll";
-                            
-                            this.menu(false)
-                        }} smooth="easeInOutCubic" offset={this.state.offset} duration={700}>
-                            <span className="header-button">Kontakt</span>
-                        </Link>
+                    <HashLink to="/#contact" scroll={hashScrollHandler}>
+                        <span className="header-button">Kontakt</span>
+                    </HashLink>
 
-                        <a href="/aplikuj" style={{textDecoration: 'none'}}>
-                            <button className="panel-login">
-                                Aplikuj
-                            </button>
-                        </a>
-                    </ul>
-                </nav>
-            </header>
-        );
-    }
+                    <Link to="/aplikuj">
+                        <button className="panel-login">
+                            Aplikuj
+                        </button>
+                    </Link>
+                </ul>
+            </nav>
+        </header>
+    );
 }
+export default Header;

@@ -62,7 +62,7 @@ export default class Gallery extends React.Component<any,any> {
         return (
             <div className="pti__container" id="gallery-page">
                 
-                <Header transparent={true}/>
+                <Header darkTheme={this.props.darkTheme} transparent={true}/>
             
 
                 <div className="title">

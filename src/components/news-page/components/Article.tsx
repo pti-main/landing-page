@@ -8,6 +8,15 @@ const readingTime = require('reading-time');
 
 
 export default class Article extends React.Component<any, any> {
+    constructor(props:any) {
+        super(props);
+
+        this.state = {
+            data: <span>ładowanie</span>,
+            articles: <span>ładowanie</span>
+        }
+    }
+    
     async componentDidMount() {
         let data = await fetch(`http://${document.domain + ":3001"}/news/api/v1/list/`)
             .then(resp => resp.json())
@@ -30,7 +39,6 @@ export default class Article extends React.Component<any, any> {
                         for (let i in images) {
                             item = item.split(images[i]);
                             item[0] = <div key={`${images[i]}${Math.random()}`} className="imga-container"><div className="imga" style={{backgroundImage: `url(${data.articles[a].images[images[i].split('{%{').join('').split('}%}').join('')]})`}}/></div>;
-                            console.log(item, images[i]);
                         }
 
                         return content.push(<div className="newline" key={`${i}${Math.random()}`}>{item}</div>);
@@ -59,38 +67,46 @@ export default class Article extends React.Component<any, any> {
                             articles: getMeRandomElements(b, 3)
                         }
                     
-                    ReactDOM.render(<>
-                        <div className="article-container">
-                            <div className="image-container">
-                                <div className="img" style={{backgroundImage: `url(${data.articles[a].thumbnail})`}}/>
-                            </div>
-                            <div className="article-info">
-                                <div className="article-title">{data.articles[a].title}</div>
-                                <div className="reading-time">{new Date(data.articles[a].date).toLocaleDateString("pl-PL", { year: 'numeric', month: 'long', day: 'numeric' })}, {(data.articles[a].message.length > 200) ? Math.round(readingTime(data.articles[a].message).minutes) : 1} min czytania</div>
-                            </div>
+                    this.setState({
+                        data: <>
+                            <div className="article-container">
+                                <div className="image-container">
+                                    <div className="img" style={{backgroundImage: `url(${data.articles[a].thumbnail})`}}/>
+                                </div>
+                                <div className="article-info">
+                                    <div className="article-title">{data.articles[a].title}</div>
+                                    <div className="reading-time">{new Date(data.articles[a].date).toLocaleDateString("pl-PL", { year: 'numeric', month: 'long', day: 'numeric' })}, {(data.articles[a].message.length > 200) ? Math.round(readingTime(data.articles[a].message).minutes) : 1} min czytania</div>
+                                </div>
 
-                            <div className="message">
-                                {content}
-                            </div>
+                                <div className="message">
+                                    {content}
+                                </div>
 
-                            <hr/>
+                                <hr/>
 
-                            <div className="read-more_title">Przeczytaj więcej</div>
-                        </div>
-                        <Articles data={randomArrays}/>
-                    </>, document.querySelectorAll('#article')[0]);
+                                <div className="read-more_title">Przeczytaj więcej</div>
+                            </div>    
+                        </>
+                        // articles: <Articles data={randomArrays}/>
+                    });
                     matched = true;
                     break;
                 }
 
             if (!matched)
-                ReactDOM.render(<Error404/>, document.querySelector('div.pti__container#news-page'));
+                this.setState({
+                    data: <Error404/>,
+                    articles: null
+                });
         }
     }
 
     render() {
         return (
-            <div id="article" className="container"></div>
+            <div id="article" className="container">
+                {this.state.data}
+                {this.state.articles}
+            </div>
         );
     }
 }

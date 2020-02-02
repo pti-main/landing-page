@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default class Error extends React.Component<any,any>{
     
@@ -8,11 +9,11 @@ export default class Error extends React.Component<any,any>{
                 <span id="error-id">404</span><br/>
                 {/*<code>{this.props.location.pathname}</code>*/}
                 <code>Podana strona nie została odnaleziona.</code>
-                <a href="/">
+                <Link to="/">
                     <div className="back-button">
                         Strona Główna
                     </div>
-                </a>
+                </Link>
             </div>
         )
     }
