@@ -1,13 +1,12 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import Logo from "./Logo";
 
 const Header = (props:any) => {
     const [ menuOpened, setMenuOpened ] = useState(false);
+    const [ scrolled, setScrolled ] = useState(false);
     const [ navClasses, setNavClasses ] = useState("");
-
-    let nav__menu = useRef(null);
-    let nav__button = useRef(null);
 
     let resizeHandler = () => {
         if (window.innerWidth >= 768)
@@ -19,17 +18,13 @@ const Header = (props:any) => {
         if ((!props.transparent ? window.scrollY > 90 : true) && !props.darkTheme) classes += " white";
         if (navClasses !== classes)
             setNavClasses(classes);
+        if (scrolled !== (window.scrollY > 90))
+            setScrolled((window.scrollY > 90));
     }
 
     const menu = (open:boolean) => {
-        if (window.innerWidth > 768) 
+        if (window.innerWidth > 768)
             return;
-
-        let action:string = (open) ? "add" : "remove";
-        
-        nav__menu.current.classList[action]('menu--opened');
-        nav__button.current.classList[action]('menu--opened');
-        
         if (open)
             document.querySelector('html').classList.add("disable-scroll");
         else
@@ -39,11 +34,9 @@ const Header = (props:any) => {
     }
 
     scrollHandler();
-
+    
     useEffect(() => {
-        
         document.querySelector('html').classList.remove("disable-scroll");
-
         window.addEventListener("resize", resizeHandler, false);
         if (!props.transparent) window.addEventListener('scroll', scrollHandler, false);
         return () => {
@@ -60,44 +53,44 @@ const Header = (props:any) => {
             });
     }
 
+    const hideMenuHandler = () => menu(false);
+
     return (
         <header className={navClasses}>
             <nav id="nav" className="container">
 
                 <HashLink to="/#hero" scroll={hashScrollHandler}>
-                    <div className="logo">
-                        <img alt="Logo PTI"/>
-                    </div>
+                    <Logo scrolled={(props.transparent ? true : scrolled)} darkVariant={props.darkTheme} />
                 </HashLink>
                 
-                <div ref={nav__button} className="nav__menu-open" onClick={() => menu(!menuOpened)}>
+                <div className={`nav__menu-open${(menuOpened) ? " menu--opened" : ""}`} onClick={() => menu(!menuOpened)}>
                     <div className="bar"/>
                     <div className="bar"/>
                     <div className="bar"/>
                 </div>
 
 
-                <ul ref={nav__menu} className="nav__menu">
+                <ul className={`nav__menu${(menuOpened) ? " menu--opened" : ""}`}>
 
-                    <HashLink to="/#informations" scroll={hashScrollHandler}>
+                    <HashLink onClick={hideMenuHandler} to="/#informations" scroll={hashScrollHandler}>
                         <span className="header-button">Informacje</span>
                     </HashLink>
                         
                     
-                    <Link to="/galeria">
+                    <Link onClick={hideMenuHandler} to="/galeria">
                         <span className="header-button">Galeria</span>
                     </Link>
 
 
-                    <Link to="/aktualnosci">
+                    <Link onClick={hideMenuHandler} to="/aktualnosci">
                         <span className="header-button">Aktualności</span>
                     </Link>
 
-                    <HashLink to="/#contact" scroll={hashScrollHandler}>
+                    <HashLink onClick={hideMenuHandler} to="/#contact" scroll={hashScrollHandler}>
                         <span className="header-button">Kontakt</span>
                     </HashLink>
 
-                    <Link to="/aplikuj">
+                    <Link onClick={hideMenuHandler} to="/aplikuj">
                         <button className="panel-login">
                             Aplikuj
                         </button>

@@ -1,4 +1,13 @@
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+const analytics = gql`
+mutation {
+    addAnalytics
+}
+`;
+
 export default async function Analytics() {
+    let nav:any = window.navigator;
     return await fetch(`http://${document.domain + ":3001"}/analytics/api/v1/collect/data`, {
         method: "POST",
         cache: "no-cache",
@@ -38,6 +47,8 @@ export default async function Analytics() {
                     language: navigator.language,
                     vendor: navigator.vendor,
 
+                    battery: await nav.getBattery().then((a:any) => a),
+
                     cookieEnabled: navigator.cookieEnabled,
 
                     browser: {
@@ -46,5 +57,5 @@ export default async function Analytics() {
                     }
                 }
             })
-        });
+        }).catch(err => console.error(err));
 }

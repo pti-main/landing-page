@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 
 import './css/main.css';
 import MainPage from './main-page/App';
@@ -9,8 +9,12 @@ import Page404 from './404-error/App';
 import GalleryPage from './gallery-page/App';
 
 import Analytics from './Analytics';
-const Routes = () => {
+const Routes = (props:any) => {
     const [ darkTheme, setDarkTheme ] = useState(true);
+    const history = useHistory();
+
+    const setCookie = (name:string, value:boolean) => 
+      document.cookie = name + "=" + (value.toString() || "") + ";";
 
     const getCookie = (name:string) => {
         let cookies = document.cookie.split(';');
@@ -52,6 +56,7 @@ const Routes = () => {
         addMediaListeners();
         Analytics();
         let transitionTimeout = window.setTimeout(() => document.body.classList.remove('noTransition'), 500);
+
         return () => {
             //just in case, cleaning function
             //should run only as cWU
@@ -62,25 +67,32 @@ const Routes = () => {
     }, []);
     
     const toggleTheme = () => {
+        setCookie('darkmode', !darkTheme);
         setDarkTheme(darkTheme => !darkTheme);
     }
     
     useEffect(() => {
         document.body.classList[(darkTheme) ? "add" : "remove"]("dark-theme");
     }, [darkTheme]);
+
+    history.listen(() => {
+        window.scrollTo(0, 0)
+    });
     
     return (
-        <Router>
-            <div className="site__router">
-                <Switch>
-                    <Route exact path="/" render={(props:any) => <MainPage {...props} handleThemeChange={toggleTheme} darkTheme={darkTheme}/>} />
-                    <Route path={"/aplikuj"} render={(props:any) => <ApplicationPage {...props} darkTheme={darkTheme}/>} />
-                    <Route path={"/aktualnosci"} render={(props:any) => <NewsPage {...props} darkTheme={darkTheme}/>} />
-                    <Route path={"/galeria"} render={(props:any) => <GalleryPage {...props} darkTheme={darkTheme}/>} />
-                    <Route component={Page404}/>
-                </Switch>
-            </div>
-        </Router>
+        <div className="site__router">
+            
+                    <Switch>
+                        <Route exact path="/" render={(props:any) => <MainPage {...props} handleThemeChange={toggleTheme} darkTheme={darkTheme}/>} />
+                        <Route path={"/aplikuj"} render={(props:any) => <ApplicationPage {...props} darkTheme={darkTheme}/>} />
+                        <Route path={"/aktualnosci"} render={(props:any) => <NewsPage {...props} handleThemeChange={toggleTheme} darkTheme={darkTheme}/>} />
+                        <Route path={"/galeria"} render={(props:any) => <GalleryPage {...props} darkTheme={darkTheme}/>} />
+                        
+                        <Route path={"/404"} render={(props:any) => <Page404 {...props} darkTheme={darkTheme}/>} />
+                        
+                        <Redirect to={"/404"}/>
+                    </Switch>
+        </div>
     );
 }
 export default Routes;

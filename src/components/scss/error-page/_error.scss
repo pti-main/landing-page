@@ -24,20 +24,26 @@ div#error-page {
         font-weight: bolder;
     }
 
-    code {
+    .error-title {
         text-align: center;
         width: 80%;
     }
+
     a {
         text-decoration: none;
+        margin-top: 2rem;
         color: color(text-main);
+        opacity: 0.75;
+        transition: opacity 250ms ease-in-out;
+        &:hover {
+            opacity: 1;
+        }
         .back-button {
             animation: gradientAnimation 6s ease-in-out infinite;
             background: linear-gradient(to right, darken(lightcoral, 5), lighten(color(accent), 20), darken(lightgreen, 10));
             background-size: 300% 300%;
-            margin-top: 2rem;
             font-size: 1.125rem;
-            font-family: monospace;
+            // font-family: monospace;
             padding: .75rem 2rem;
             font-weight: 900;
             border-radius: $br;

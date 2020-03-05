@@ -81,7 +81,7 @@
                     cursor: pointer;
                     padding: 1.25rem 1.75rem;
                     transition: color 300ms ease-in-out,
-                                background-color 100ms ease-in-out;
+                                background-color 300ms ease-in-out;
                     color: color(text-main);
                     background-color: color(accent);
                     border-radius: $br;
@@ -94,6 +94,12 @@
                     &:active,
                     &:hover {
                         background-color: darken(color(accent), 10);
+                    }
+                    &.confirmed {
+                        background-color: darken(color(green), 10);
+                    }
+                    &.denied {
+                        background-color: darken(color(red), 20);
                     }
                 }
                 .input-error {

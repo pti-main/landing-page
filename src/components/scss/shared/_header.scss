@@ -32,13 +32,6 @@ header {
             background: lighten(color(dark), 15) !important;
         }
 
-        a {
-            .logo {
-                img {
-                    content: url("/img/logo_pti-dark.png") !important;
-                }
-            }
-        }
     }
 }
 
@@ -83,7 +76,6 @@ header {
             img {
                 height: 100%;
                 width: auto;
-                content: url("/img/logo_pti.png");
             }
         }
     }

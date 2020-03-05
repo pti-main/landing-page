@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Header from '../shared/components/Header';
 import Footer from '../shared/components/Footer';
@@ -10,22 +10,29 @@ import Reasons from './components/Reasons';
 import Tiles from './components/Tiles';
 
 const App = (props:any) => {
+    useEffect(() => {
+        document.title = "Prywatne Technikum Informatyczne";
+    }, []);
+
     return (
-        <div className="pti__container" id="main-page">
-            <Header darkTheme={props.darkTheme}/>
+        <>
+        <Header darkTheme={props.darkTheme}/>
+            <div className="pti__container">
+                <div id="main-page">
+                    <Hero/>
 
-            <Hero/>
+                    <Informations/>
 
-            <Informations/>
+                    <Reasons/>
+                    
+                    <Tiles/>
+                    
+                    <Contact/>
 
-            <Reasons/>
-            
-            <Tiles/>
-            
-            <Contact/>
-
-            <Footer onClick={props.handleThemeChange}/>
-        </div>
+                    <Footer onClick={props.handleThemeChange}/>
+                </div>
+            </div>
+        </>
     );
 }
 export default App;

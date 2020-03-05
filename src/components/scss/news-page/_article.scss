@@ -11,75 +11,124 @@ div#article {
     .article-container {
         width: 80%;
         max-width: 600px;
-        margin: 0 auto;
-    }
-
-    div.image-container {
-        max-height: 300px;
-        width: 100%;
-        overflow: hidden;
-
-        div.img {
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-
+        margin: 0 auto ;
+    
+        div.image-container {
+            max-height: 300px;
             width: 100%;
-            height: 300px;
+            overflow: hidden;
+            background-color: darken(color(text-main), 20);
+    
+            div.img {
+                margin: 0;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+    
+                width: 100%;
+                height: 300px;
+            }
         }
-    }
-
-    .imga-container {
-        margin: 2rem 0;
-        width: 100%;
-        height: 400px;
-        overflow: hidden;
-        .imga {
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
+    
+        .imga-container {
+            margin: 2rem 0;
             width: 100%;
-            height: 100%;
+            height: 400px;
+            overflow: hidden;
+            .imga {
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+            }
         }
-    }
-    .newline {
-        margin: 1rem 0;
-        font-size: 18px;
-        user-select: auto;
-    }
-
-    .article-info {
-        margin: 1.5rem 0 1rem .5rem;
-        user-select: auto;
-
-        .article-title {
+        
+        img {
+            margin: 2rem 0;
+            width: 100%;
+            height: auto;
+        }
+    
+        h1, h2, h3 {
+            padding-top: .5rem;
+            font-size: 1.4rem;
+            margin-bottom: -10px;
+        }
+    
+        pre {
+            border-radius: $br;
+            background-color: darken(color(text-main), 5) !important;
+            color: color(dark) !important;
+            padding: .75rem !important;
+            user-select: text !important;
+            font-size: .8rem !important;
+        }
+    
+        a {
+            color: darken(color(dark), 5);
+            text-decoration: underline;
+        }
+    
+        div {
+            margin: 1rem 0;
+            font-size: 18px;
+            user-select: none;
+        }
+    
+        .article-info {
+            margin: 1.5rem 0 1.5rem .5rem;
+    
+            .article-title {
+                font-weight: 600;
+                font-size: 1.75rem;
+            }
+        }
+    
+        hr {
+            width: 100%;
+            border-radius: $br;
+            opacity: .5;
+            margin-top: 2rem;
+            border: 1px solid rgb(128, 128, 128);
+        }
+    
+    
+        .read-more_title {
             font-weight: 600;
-            font-size: 1.75rem;
-            
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            // text-align: center;
         }
+    
+        #articles {
+            margin-top: 2rem;
+            width: 100%;
+            // transform: translateX(-15%);
+            margin-bottom: 2rem;
+        }
+    
     }
+}
 
-    hr {
-        width: 100%;
-        border-radius: $br;
-        opacity: .5;
-        margin-top: 2rem;
-        border: 1px solid rgb(128, 128, 128);
-    }
+.dark-theme {
+    div#article {
+        div.image-container {
+            background-color: lighten(color(dark), 15);
+        }
 
+        pre {
+            background-color: darken(color(dark), 3) !important;
+            color: color(text-main) !important;
+        }
+        code {
+            filter: contrast(40%);
+        }
 
-    .read-more_title {
-        font-weight: 600;
-        font-size: 1.5rem;
-        margin-top: 1rem;
-        // text-align: center;
-    }
-
-    #articles {
-        margin-top: 2rem;
-        width: 100%;
-        // transform: translateX(-15%);
-        margin-bottom: 2rem;
+        a {
+            color: darken(color(text-main), 15);
+            text-decoration: underline;
+        }
     }
 }
 

@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Form from './components/Form';
 
-export default class App extends React.Component<any,any>{
+const Application = (props:any) => {
+    useEffect(() => {
+        document.title = "Aplikuj - Prywatne Technikum Informatyczne";
+    }, []);
 
-    render() {
-        return (
-            <div className="pti__container" id="application-page">
-                {/* <Menu/> */}
-                <Form/>
-            </div>
-        )
-    }
+    return (
+        <div className="pti__container" id="application-page">
+            <Form {...props} darkTheme={props.darkTheme}/>
+        </div>
+    );
 }
+
+export default Application;

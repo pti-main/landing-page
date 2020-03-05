@@ -3,6 +3,7 @@
 @import './shared/core.scss';
 @import './shared/header.scss';
 @import './shared/footer.scss';
+@import './shared/animations.scss';
 
 // main-page component
 @import './main-page/hero.scss';
@@ -14,7 +15,6 @@
 // application-page component
 @import './application-page/menu.scss';
 @import './application-page/form.scss';
-@import './application-page/animations.scss';
 
 // news-page component
 @import './news-page/news.scss';
