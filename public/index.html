@@ -1,42 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created for our technikum."
-    />
-    <link rel="apple-touch-icon" href="logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#000000" />
+		<meta
+			name="description"
+			content="Web site created for our technikum."
+		/>
+		<link rel="apple-touch-icon" href="logo192.png" />
+		<link rel="manifest" href="/manifest.json" />
+		<title>Prywatne Technikum Informatyczne</title>
+	</head>
+	<body class="noTransition">
+		<noscript>
+			<link rel="stylesheet" href="noscript.css"/>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Prywatne Technikum Informatyczne</title>
-  </head>
-  <body class="noTransition">
-    <noscript>
-      /public/index.html - tag: <code>#noscript</code> - zmienianie tego wtedy końcowy użytkownik nie posiada włączonej obsługi JS'a.
-      <iframe src="%PUBLIC_URL%/analytics/api/v1/collect/noscript" height="0" width="0"></iframe>
-    </noscript>
-    <div id="pti__site"></div>
-    <!-- 
-      author tag:
-              - hacksncode (Ilya) [ main coder, designer ],
-              - Patryk [designer of main Page (50% used) ],
-              - Filip [ main coder, designer ]
-    -->
-  </body>
+			<div class="noscript__container">
+				<div class="noscript_image__container">
+					<img src="img/logo_pti.png" alt="Logo PTI"/>
+				</div>
+
+				<div class="noscript_information">Strona wymaga włączonej obsługi JavaScript'u.</div>
+			</div>
+		</noscript>
+		<div id="pti__site"></div>
+	</body>
 </html>

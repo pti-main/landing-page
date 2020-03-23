@@ -1,13 +1,11 @@
 import React from 'react';
-import { Link, useLocation, useHistory} from 'react-router-dom';
-import { useSpring, animated } from 'react-spring'; //zimportuj { uzyjWiosny, animowany } z 'reakcja-wiosna';
+import { Link,  useHistory} from 'react-router-dom';
 
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import Loader from '../../shared/components/Loader';
 import Error from '../../shared/components/Error';
 
-const removeMd = require('remove-markdown');
 
 const Articles = (props:any) => {
     let history = useHistory();

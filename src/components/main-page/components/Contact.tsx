@@ -57,7 +57,7 @@ const Contact = () => {
 							email: (document.querySelector(".input-email") as HTMLInputElement).value,
 							phone: (document.querySelector(".input-tel") as HTMLInputElement).value,
 						}});
-						let status = (response.data.addContact.success == true);
+						let status = (response.data.addContact.success === true);
 
 						document.querySelector('button.input-button').classList.add(status ? "confirmed" : "denied");
 						setTimeoutID(setTimeout(() => {
@@ -66,14 +66,14 @@ const Contact = () => {
 
 						
 					}}>
-					<input className="input-title" type="text" placeholder="Tytuł"/>
+					<input className="input-title" required type="text" placeholder="Tytuł"/>
 					<input className="input-email" required type="email" 
 						onChange={(e) => (/^\w+([.-]?\w+)*@\w+([.-]?\w+)+$/.test(e.currentTarget.value) || e.currentTarget.value === "") ? e.currentTarget.classList.remove('input-error') : e.currentTarget.classList.add('input-error')}
 						autoComplete="on" placeholder="E-Mail"/>
 					
 					<input className="input-tel" maxLength={12} minLength={9} 
 						onChange={(e) => (/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/.test(e.currentTarget.value)|| e.currentTarget.value === "") ? e.currentTarget.classList.remove('input-error') : e.currentTarget.classList.add('input-error')}
-							type="tel" placeholder="Telefon"/>
+							type="tel" required placeholder="Telefon"/>
 
 					<textarea className="input-message" required minLength={15} 
 						onChange={(e) => (e.currentTarget.value.length > 15 || e.currentTarget.value === "") ? e.currentTarget.classList.remove('input-error') : e.currentTarget.classList.add('input-error')}

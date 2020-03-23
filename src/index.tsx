@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { BrowserRouter as Router } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
@@ -18,10 +19,11 @@ const client = new ApolloClient({
     cache: new InMemoryCache()
 });
 
-ReactDOM.render(
-    <Router>
-        <ApolloProvider client={client}>
+ReactDOM.render(<ApolloProvider client={client}>
+    <CookiesProvider>
+        <Router>
             <App/>
-        </ApolloProvider>
-    </Router>,
+        </Router>
+    </CookiesProvider>
+</ApolloProvider>,
 document.getElementById('pti__site'));

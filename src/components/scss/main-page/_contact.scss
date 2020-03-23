@@ -103,7 +103,7 @@
                     }
                 }
                 .input-error {
-                    border-color: #f44336;
+                    border-color: color(errorRed);
                 }
                 .input-privacy {
                     grid-area: privacy;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import Articles from './Articles';
 import CodeElement from './CodeElement';
 import { useLocation, useHistory } from 'react-router-dom';

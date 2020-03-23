@@ -8,8 +8,9 @@ function ProgressButtons(props:any) {
     let buttons: JSX.Element[] = [];
     let isOnLastPage:boolean = (props.currentStage === props.stagesLength - 1);
     let isOnSubmitPage:boolean = (props.currentStage === props.stagesLength - 2);
+
     let nextButton:JSX.Element = (
-        <div className={`next button${isOnSubmitPage ? " submit" : ""}${(props.selectedProfile) ? "" : " disabled"}`} onClick={_ => props.handleButtonClick('next', props.stagesLength)}>
+        <div className={`next button${isOnSubmitPage ? " submit" : ""}${(props.enabled[props.currentStage]) ? "" : " disabled"}`} onClick={_ => props.handleButtonClick('next', props.stagesLength)}>
           <span className="text">{isOnLastPage ? "Strona główna" : isOnSubmitPage ? "Zatwierdź" : "Dalej"}</span>
           <span className="arrow">{arrowRight}</span>
         </div>);
@@ -37,4 +38,4 @@ function ProgressButtons(props:any) {
     );
 }
 
-export default ProgressButtons;
+export default React.memo(ProgressButtons);

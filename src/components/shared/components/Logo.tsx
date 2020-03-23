@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Logo(props:any) {
+function Logo({darkVariant, scrolled}:any) {
     let logo_url;
-    if (props.darkVariant) {
+    if (darkVariant) {
         logo_url = "/img/logo_pti.png";
     } else {
-        logo_url = ((props.scrolled || props.scrolled === undefined) ? "/img/logo_pti-dark.png" : "/img/logo_pti.png");
+        logo_url = ((scrolled || scrolled === undefined) ? "/img/logo_pti-dark.png" : "/img/logo_pti.png");
     }
 
     return (
@@ -15,4 +15,4 @@ function Logo(props:any) {
     );
 }
 
-export default Logo;
+export default React.memo(Logo);

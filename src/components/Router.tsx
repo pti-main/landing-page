@@ -7,37 +7,54 @@ import ApplicationPage from './application-page/App';
 import NewsPage from './news-page/App';
 import Page404 from './404-error/App';
 import GalleryPage from './gallery-page/App';
+import getVisitAnalytics from './VisitAnalytics';
 
-import Analytics from './Analytics';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { useCookies } from 'react-cookie';
+
+const analytics = gql`
+mutation($type: String!, $data: String!, $id: String) {
+    sendAnalytics(type: $type, data: $data, id: $id)
+}`;
+
+//ble funkcja
+
+const getDomPath = (el:any) => {
+    let stack = [];
+    while ( el.parentNode !== null ) {
+      
+      if ( el.hasAttribute('id') && el.id !== '' ) 
+        stack.unshift(el.nodeName.toLowerCase() + '#' + el.id);
+      else
+        stack.unshift(el.nodeName.toLowerCase());
+      
+      el = el.parentNode;
+    }
+  
+    return stack.slice(1); // removes the html element
+}
+
+
 const Routes = (props:any) => {
     const [ darkTheme, setDarkTheme ] = useState(true);
     const history = useHistory();
+    const [ postAnalytics ] = useMutation(analytics);
+    const [ cookies, setCookie ] = useCookies();
 
-    const setCookie = (name:string, value:boolean) => 
-      document.cookie = name + "=" + (value.toString() || "") + ";";
-
-    const getCookie = (name:string) => {
-        let cookies = document.cookie.split(';');
-        for (let i in cookies) {
-            let c = cookies[i];
-
-            while (c.charAt(0) === ' ') 
-                c = c.substring(1, c.length);
-
-            if (c.indexOf(name) === 0) 
-                return (c.substring(`${name}=`.length,c.length) === "true") ? true : false;
-        }
-        return null;
-    }
 
     const getUserTheme = () => {
-        if (getCookie('darkmode') === null) {
+        console.log(cookies['darkmode'])
+        if (cookies['darkmode'] === null) {
             if (window.matchMedia("(prefers-color-scheme: dark)").matches)
                 setDarkTheme(true);
             else if (window.matchMedia("(prefers-color-scheme: light)").matches)
                 setDarkTheme(false);
+            else
+                setDarkTheme(true);
         } else
-            (getCookie('darkmode') === true) ? setDarkTheme(true) : setDarkTheme(false);
+            setDarkTheme(Boolean(cookies['darkmode']));
+            // (getCookie('darkmode') === true) ? setDarkTheme(true) : setDarkTheme(false);
     }
 
     const addMediaListeners = () => {
@@ -54,7 +71,33 @@ const Routes = (props:any) => {
         //should run only as cDM
         getUserTheme();
         addMediaListeners();
-        Analytics();
+        let pA = async () => {
+            await postAnalytics({
+                variables: {
+                    type: "visit",
+                    data: await getVisitAnalytics(),
+                    id: cookies["pti-analytics"]
+                }
+            }).then((a) => {
+                setCookie("pti-analytics", a.data.sendAnalytics);
+
+                // document.addEventListener("click", (e:any) => {
+                //     postAnalytics({
+                //         variables: {
+                //             type: "click",
+                //             data: JSON.stringify({
+                //                 path: getDomPath(e.target),
+                //                 location: window.location.pathname,
+                //                 darkTheme: darkTheme
+                //             }),
+                //             id: cookies["pti-analytics"]
+                //         }
+                //     })
+                // });
+            });
+        };
+        pA();
+
         let transitionTimeout = window.setTimeout(() => document.body.classList.remove('noTransition'), 500);
 
         return () => {
@@ -81,17 +124,16 @@ const Routes = (props:any) => {
     
     return (
         <div className="site__router">
-            
-                    <Switch>
-                        <Route exact path="/" render={(props:any) => <MainPage {...props} handleThemeChange={toggleTheme} darkTheme={darkTheme}/>} />
-                        <Route path={"/aplikuj"} render={(props:any) => <ApplicationPage {...props} darkTheme={darkTheme}/>} />
-                        <Route path={"/aktualnosci"} render={(props:any) => <NewsPage {...props} handleThemeChange={toggleTheme} darkTheme={darkTheme}/>} />
-                        <Route path={"/galeria"} render={(props:any) => <GalleryPage {...props} darkTheme={darkTheme}/>} />
-                        
-                        <Route path={"/404"} render={(props:any) => <Page404 {...props} darkTheme={darkTheme}/>} />
-                        
-                        <Redirect to={"/404"}/>
-                    </Switch>
+            <Switch>
+                <Route exact path="/" render={(props:any) => <MainPage {...props} handleThemeChange={toggleTheme} darkTheme={darkTheme}/>} />
+                <Route path={"/aplikuj"} render={(props:any) => <ApplicationPage {...props} darkTheme={darkTheme}/>} />
+                <Route path={"/aktualnosci"} render={(props:any) => <NewsPage {...props} handleThemeChange={toggleTheme} darkTheme={darkTheme}/>} />
+                <Route path={"/galeria"} render={(props:any) => <GalleryPage {...props} darkTheme={darkTheme}/>} />
+                
+                <Route path={"/404"} render={(props:any) => <Page404 {...props} darkTheme={darkTheme}/>} />
+                
+                <Redirect to={"/404"}/>
+            </Switch>
         </div>
     );
 }
