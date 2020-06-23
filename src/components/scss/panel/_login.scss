@@ -1,0 +1,59 @@
+.login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    form {
+        display: grid;
+        width: 50%;
+        max-width: 400px;
+        gap: 1rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+        grid-template-areas:
+            "title"
+            "email"
+            "password"
+            "button";
+        .form-title {
+            grid-area: title;
+            font-size: 1.75rem;
+            width: 100%;
+            text-align: left;
+            font-weight: 700;
+        }
+        .input-email {
+            grid-area: email;
+        }
+        .input-password {
+            grid-area: password;
+        }
+        .input-button {
+            grid-area: button;
+            font-family: $font;
+            width: 100%;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            padding: 1.25rem 1.75rem;
+            transition: color 300ms ease-in-out,
+                        background-color 300ms ease-in-out,
+                        opacity 300ms ease-in-out;
+            color: color(text-main);
+            background-color: color(accent);
+            border-radius: $br;
+            font-size: 1rem;
+            &.disabled {
+                opacity: .5;
+                pointer-events: none;
+            }
+            &:active,
+            &:hover {
+                background-color: darken(color(accent), 10);
+            }
+        }
+    }
+}

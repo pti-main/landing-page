@@ -1,0 +1,58 @@
+//TODO: delete all ReactTransitionGroup and change it for react-spring type of animation
+.stage-enter, .stage-appear {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.stage-enter-active, .stage-appear-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 300ms;
+}
+
+.stage-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.stage-exit-active {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 300ms;
+}
+//--------------------
+.fade-enter, .fade-appear {
+  opacity: 0;
+}
+
+.fade-enter-active, .fade-appear-active {
+  opacity: 1;
+  transition: all 600ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: all 600ms;
+}
+//--------------------
+.router--animation-enter, .router--animation-appear {
+  opacity: 0;
+}
+
+.router--animation-enter-active, .router--animation-appear-active {
+  opacity: 1;
+  transition: all 300ms;
+}
+
+.router--animation-exit {
+  opacity: 1;
+}
+
+.router--animation-exit-active {
+  opacity: 0;
+  transition: all 300ms;
+}

@@ -1,0 +1,62 @@
+.charts {
+    .recharts-cartesian-grid-vertical, .recharts-cartesian-grid-horizontal {
+        opacity: 1;
+        transition: opacity 300ms ease-in-out;
+    }
+
+    .recharts-wrapper {
+        width: 100% !important;
+        height: 100% !important;
+        .recharts-surface {
+            width: 100% !important;
+            height: auto !important;
+        }
+    }
+
+    .recharts-cartesian-axis-tick-value {
+        fill: currentColor;
+        transition: color 300ms ease-in-out;
+        color: rgba(color(dark), .6);
+    }
+
+    .recharts-cartesian-grid-vertical {
+        display: none;
+    }
+
+    .recharts-default-tooltip {
+        background-color: color(text-main) !important;
+        color: color(dark);
+        border-radius: $br;
+        border: 1px solid darken(color(text-main), 10) !important;
+        .recharts-tooltip-item-list {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .recharts-tooltip-label {
+            font-size: .9rem;
+            opacity: .8;
+            margin-bottom: -.2rem !important;
+        }
+    }
+}
+
+
+.dark-theme {
+    .charts {
+        .recharts-cartesian-grid-vertical, .recharts-cartesian-grid-horizontal {
+            opacity: .3;
+        }
+        .recharts-cartesian-axis-tick-value {
+            fill: currentColor;
+            color: rgba(darken(color(text-main), 15), .75);
+        }
+
+        .recharts-default-tooltip {
+            background-color: lighten(color(dark), 5) !important;
+            color: color(text-main);
+            border-radius: $br;
+            border: 1px solid lighten(color(dark), 10) !important;
+        }
+    }
+}

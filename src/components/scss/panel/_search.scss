@@ -1,0 +1,271 @@
+.search_container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    max-width: 100%;
+    padding: 1rem;
+    .search_title {
+        margin-top: .25rem;
+    }
+    .search {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        .search_input_wrapper {
+            display: flex;
+            margin-bottom: 1.75rem;
+            &.withIcon {
+                display: grid;
+                grid-template-columns: 1fr 40px;
+                grid-template-rows: 1fr;
+                gap: 1rem;
+                input {
+                    padding: .5rem .75rem;
+                    font-size: 0.8rem;
+                }
+                .search_input_addButton {
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: $br;
+                    transition: background 250ms ease-in-out, border-color 250ms ease-in-out;
+                    background: darken(color(green), 5);
+                    border: 2px solid darken(color(green), 15);
+                    cursor: pointer;
+                    color: color(background-main);
+                    &:hover {
+                        background: darken(color(green), 10);
+                        border-color: darken(color(green), 25);
+                    }
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+            }
+        }
+        .search-list {
+            width: 100%;
+            height: 100%;
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            .empty_search {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                height: 100%;
+                flex: 1;
+                justify-content: center;
+                align-items: center;
+
+                svg {
+                    height: 100px;
+                    width: 100px;
+                }
+
+                .empty_search_message {
+                    font-weight: 700;
+                    font-size: 1rem;
+                    margin-top: 1rem;
+                }
+            }
+            .search-list_records {
+                display: flex;
+                margin-bottom: 2rem;
+                flex-direction: column;
+                flex: 1;
+                .article_list_item {
+                    display: grid;
+                    grid-template-columns: 20% 1fr;
+                    grid-template-rows: 1fr;
+                    border-radius: 6px;
+                    overflow: hidden;
+                    background: darken(color(text-main), 2.5);
+                    transition: background 250ms ease-in-out;
+                    &:not(:last-of-type) {
+                        margin-bottom: 1rem;
+                    }
+                    .image_container {
+                        position: relative;
+                        z-index: 1;
+                        overflow: hidden;
+                        .article_image {
+                            position: absolute;
+                            z-index: -1;
+                            top: -2.5%;
+                            left: -2.5%;
+                            height: 105%;
+                            width: 105%;
+                            object-fit: cover;
+                        }
+                        .article_image_fallback {
+                            position: absolute;
+                            z-index: -2;
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            width: 100%;
+                            padding: .25rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            opacity: .5;
+                            font-weight: 700;
+                            text-align: center;
+                        }
+                    }
+                    .info_container {
+                        background: #eaeaea;
+                        transition: background 250ms ease-in-out;
+                        padding: 1rem;
+                        display: grid;
+                        word-break: break-word;
+
+                        .info_container_title {
+                            margin-top: 0;
+                            margin: .5rem 0;
+                            font-size: 2rem;
+                            font-weight: 700;
+                            margin-bottom: 1rem;
+                        }
+
+                        .info_container_data {
+                            padding: 0 .75rem;
+                            border-left: 4px solid #474755;
+
+                            &_entry {
+                                &_title {
+                                    color: lighten(color(accent), 15);
+                                    font-weight: 700;
+                                    border-bottom: 2px solid rgba(71,71,85,.75);
+                                    font-size: .75rem;
+                                    text-align: left;
+                                    padding-bottom: .325rem;
+                                    opacity: .85;
+                                }
+                            }
+
+                            &_grid {
+                                display: grid;
+                                grid-template-columns: 1fr 1fr;
+                                grid-gap: 1rem;
+                                gap: 1rem;
+                                margin-top: 1rem;
+                                grid-template-rows: auto auto;
+                            }
+                        }
+
+                        &_button {
+                            border-radius: 6px;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            color: color(dark);
+                            background: transparent;
+                            border: 2px solid lighten(color(accent), 15);
+                            text-align: center;
+                            font-size: .75rem;
+                            margin-top: .5rem;
+                            padding: .45rem 1.25rem;
+                            width: max-content;
+                            margin-left: auto;
+                            transition: all 150ms ease-in-out;
+                            &:hover {
+                                background: lighten(color(accent), 20);
+                                color: color(dark);
+                                border-color: lighten(color(accent), 20);
+                            }
+                        }
+                    }
+                }
+            }
+            .search-list_buttons {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                
+                .search-list_button,
+                .search-list_button_back,
+                .search-list_button_forward,
+                .search-list_button_first,
+                .search-list_button_last {
+                    border: none;
+                    color: color(dark);
+                    font-weight: 700;
+                    width: 35px;
+                    height: 35px;
+                    border-radius: $br;
+                    font-size: .85rem;
+                    margin: 0 .25rem;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 250ms ease-in-out;
+                    border: 2px solid darken(color(background-main), 10);
+                    margin-bottom: .5rem;
+                    &:hover {
+                        background: darken(color(background-main), 10);
+                        border-color: darken(color(background-main), 15);
+                    }
+                    svg {
+                        height: 14px;
+                        width: auto;
+                    }
+                    &.active {
+                        background: lighten(color(accent), 5) !important;
+                        border: 2px solid color(accent) !important;
+                        color: color(text-main) !important;
+                        &:hover {
+                            background: lighten(color(accent), 7.5) !important;
+                            border: 2px solid lighten(color(accent), 2.5) !important;
+                        }
+                    }
+                    &[disabled] {
+                        filter: contrast(0.6) opacity(0.65);
+                        pointer-events: none;
+                    }
+                }
+            }
+        }
+    }
+}
+.dark-theme {
+    .article_list_item {
+        background: lighten(color(dark), 2.5) !important;
+    }
+
+    .search-list_button,
+    .search-list_button_back,
+    .search-list_button_forward,
+    .search-list_button_first,
+    .search-list_button_last {
+        background: lighten(color(dark), 5) !important;
+        color: color(text-main) !important;
+        border: 2px solid lighten(color(dark), 10) !important;
+        &:hover {
+            background: lighten(color(dark), 10) !important;
+            border-color: lighten(color(dark), 15) !important;
+        }
+    }
+
+    .info_container {
+        background: lighten(color(dark), 10) !important;
+        &_button {
+            color: lighten(color(accent), 15) !important;
+            &:hover {
+                color: color(dark) !important;
+            }
+        }
+    }
+}

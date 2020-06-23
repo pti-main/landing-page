@@ -1,0 +1,161 @@
+div#article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-wrap: break-word;
+    text-align: left;
+    /* padding: 0 15rem; */
+    // width: 80%;
+    // max-width: 550px;
+
+    .article-container {
+        width: 80%;
+        max-width: 600px;
+        margin: 0 auto ;
+    
+        div.image-container {
+            max-height: 300px;
+            width: 100%;
+            overflow: hidden;
+            background-color: darken(color(text-main), 20);
+    
+            div.img {
+                margin: 0;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+    
+                width: 100%;
+                height: 300px;
+            }
+        }
+    
+        .imga-container {
+            margin: 2rem 0;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            .imga {
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        blockquote {
+            transition: background-color 250ms ease-in-out,
+                        color 250ms ease-in-out,
+                        border-left 250ms ease-in-out;
+            background-color: darken(color(background-main), 10);
+            border-radius: $br;
+            color: color(dark);
+            border-left: 10px solid lighten(color(dark), 35) !important;
+            div {
+                padding-left: 1rem;
+            }
+        }
+        
+        img {
+            margin: 2rem 0;
+            width: 100%;
+            height: auto;
+        }
+    
+        h1, h2, h3 {
+            padding-top: .5rem;
+            font-size: 1.4rem;
+            margin-bottom: -10px;
+        }
+    
+        pre {
+            border-radius: $br;
+            background-color: darken(color(text-main), 5) !important;
+            color: color(dark) !important;
+            padding: .75rem !important;
+            user-select: text !important;
+            font-size: .8rem !important;
+        }
+    
+        a {
+            color: darken(color(dark), 5);
+            text-decoration: underline;
+        }
+    
+        div {
+            margin: 1rem 0;
+            font-size: 18px;
+            user-select: none;
+        }
+    
+        .article-info {
+            margin: 1.5rem 0 1.5rem .5rem;
+    
+            .article-title {
+                font-weight: 600;
+                font-size: 1.75rem;
+            }
+        }
+    
+        hr {
+            width: 100%;
+            border-radius: $br;
+            opacity: .5;
+            margin-top: 2rem;
+            border: 1px solid rgb(128, 128, 128);
+        }
+    
+    
+        .read-more_title {
+            font-weight: 600;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            // text-align: center;
+        }
+    
+        #articles {
+            margin-top: 2rem;
+            width: 100%;
+            // transform: translateX(-15%);
+            margin-bottom: 2rem;
+        }
+    
+    }
+}
+
+.dark-theme {
+    div#article {
+        div.image-container {
+            background-color: lighten(color(dark), 15);
+        }
+
+        blockquote {
+            background-color: lighten(color(dark), 7.5);
+            color: color(background-main);
+            border-left: 10px solid darken(color(background-main), 35) !important;
+        }
+
+        pre {
+            background-color: darken(color(dark), 3) !important;
+            color: color(text-main) !important;
+        }
+        code {
+            filter: contrast(40%);
+        }
+
+        a {
+            color: darken(color(text-main), 15);
+            text-decoration: underline;
+        }
+    }
+}
+
+@media (max-width: 786px) {
+    .imga-container, .image-container {
+        width: 110vw !important;
+        transform: translateX(-20%);
+        overflow: hidden;
+        height: 40vh !important;
+    }
+}
